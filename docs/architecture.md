@@ -76,7 +76,7 @@ Required for every verified component:
 
 Interactive or visually sensitive components should additionally receive behavior tests and visual regression baselines.
 
-## Planned repository topology
+## Repository topology
 
 ```text
 apps/web
@@ -87,4 +87,13 @@ registry/schema
 docs
 ```
 
-The exact build tooling remains an implementation decision for M1. The project should validate the Registry contract before adding monorepo complexity.
+## Current tooling decisions
+
+- Next.js 16 App Router hosts the gallery, workbench, and static `/r` output.
+- React 19 and TypeScript 5 define the version 1 runtime contract.
+- Tailwind CSS 4 and CSS variables provide the styling and token layer.
+- pnpm workspaces separate the web, Registry, CLI, and MCP boundaries without adding Turborepo at foundation stage.
+- Root-level `pnpm check` validates Registry metadata, runs ESLint and TypeScript, builds Registry output, and performs a production Next.js build.
+- GitHub Actions runs the same check on pushes and pull requests.
+
+The bootstrap Registry builder currently supports the empty foundation manifest. Component payload generation will be implemented and verified with the first golden component rather than guessed in advance.

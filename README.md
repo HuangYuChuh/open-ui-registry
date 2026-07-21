@@ -8,23 +8,27 @@ Its goal is not to bookmark components. Its goal is to make every accepted compo
 
 ## Project status
 
-The project is in its foundation stage. The product scope, architecture, licensing policy, contribution path, and registry metadata schema are defined. The first executable component has not been published yet.
+The public repository and framework foundation are ready. The product scope, licensing policy, Registry metadata, Next.js gallery, responsive foundation page, validation scripts, and CI workflow are in place.
+
+Current verified component count: **0**. The first executable component will be selected by the project owner and implemented as the golden path.
+
+Repository: [github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
 
 ## Intended experience
 
 The first release will expose a shadcn-compatible source registry. A component should eventually be installable with a command similar to:
 
 ```bash
-pnpm dlx shadcn@latest add https://example.com/r/border-trail.json
+pnpm dlx shadcn@latest add https://example.com/r/example-component.json
 ```
 
 After installation, the application owns the source code:
 
 ```tsx
-import { BorderTrail } from "@/components/ui/border-trail";
+import { ExampleComponent } from "@/components/ui/example-component";
 
-export function SubmitButton() {
-  return <BorderTrail>Generating</BorderTrail>;
+export function ProductScreen() {
+  return <ExampleComponent />;
 }
 ```
 
@@ -68,8 +72,36 @@ See:
 - [Licensing policy](docs/licensing-policy.md)
 - [Contributing](CONTRIBUTING.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
+- [Deployment](docs/deployment.md)
 
-## Planned repository structure
+## Framework
+
+- Next.js 16 App Router for the public gallery and workbench
+- React 19 and TypeScript 5 for component source
+- Tailwind CSS 4 and CSS variables for styling and tokens
+- pnpm workspaces for the web app, Registry, future CLI, and future MCP service
+- shadcn-compatible distribution contract
+- GitHub Actions for Registry validation, lint, type checking, and production build
+- Static Docker deployment with candidate validation and rollback
+
+## Local development
+
+Requirements: Node.js 22 or newer and pnpm 11.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+Run the complete quality gate:
+
+```bash
+pnpm check
+```
+
+## Repository structure
 
 ```text
 apps/

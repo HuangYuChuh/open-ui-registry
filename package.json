@@ -1,0 +1,19 @@
+{
+  "name": "open-ui-registry",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Curated, verified, installable frontend components distributed as source code.",
+  "packageManager": "pnpm@11.2.2",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm registry:build && pnpm --filter @open-ui-registry/web dev",
+    "build": "pnpm --filter @open-ui-registry/registry build && pnpm --filter @open-ui-registry/web build",
+    "lint": "pnpm --filter @open-ui-registry/web lint",
+    "typecheck": "pnpm --filter @open-ui-registry/web typecheck",
+    "registry:build": "pnpm --filter @open-ui-registry/registry build",
+    "registry:validate": "pnpm --filter @open-ui-registry/registry validate",
+    "check": "pnpm registry:validate && pnpm lint && pnpm typecheck && pnpm build"
+  }
+}

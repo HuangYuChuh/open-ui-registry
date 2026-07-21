@@ -1,8 +1,10 @@
 node_modules/
+.pnpm-store/
 .next/
 dist/
 coverage/
 .turbo/
+/apps/web/public/r/
 .DS_Store
 Thumbs.db
 *.log

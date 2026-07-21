@@ -66,11 +66,14 @@ CLI, MCP, and Skills make components easier to retrieve and install. They do not
 
 ### M0 — Foundation
 
-- Project charter
-- Architecture decision
-- Licensing policy
-- Registry item schema
-- Contribution workflow
+- [x] Project charter
+- [x] Architecture decision
+- [x] Licensing policy
+- [x] Registry item schema
+- [x] Contribution workflow
+- [x] Public repository
+- [x] Next.js gallery foundation
+- [x] CI quality gate
 
 ### M1 — Golden path
 
