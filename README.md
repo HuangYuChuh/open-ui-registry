@@ -10,7 +10,7 @@ Its goal is not to bookmark components. Its goal is to make every accepted compo
 
 The public repository and framework foundation are ready. The product scope, licensing policy, Registry metadata, Next.js gallery, responsive foundation page, validation scripts, and CI workflow are in place.
 
-Current verified component count: **0**. The first executable component will be selected by the project owner and implemented as the golden path.
+Current verified component count: **1**. Flight Status Card is the first completed golden-path component.
 
 Repository: [github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
 
@@ -20,23 +20,21 @@ Live Registry index: [ui.kelin.center/r/registry.json](https://ui.kelin.center/r
 
 ## Intended experience
 
-The first release will expose a shadcn-compatible source registry. A component should eventually be installable with a command similar to:
+The Registry exposes shadcn-compatible component payloads. Install Flight Status Card with:
 
 ```bash
-pnpm dlx shadcn@latest add https://example.com/r/example-component.json
+pnpm dlx shadcn@latest add https://ui.kelin.center/r/flight-status-card.json
 ```
 
 After installation, the application owns the source code:
 
 ```tsx
-import { ExampleComponent } from "@/components/ui/example-component";
+import { FlightStatusCard } from "@/components/ui/flight-status-card";
 
 export function ProductScreen() {
-  return <ExampleComponent />;
+  return <FlightStatusCard />;
 }
 ```
-
-The URL above is illustrative and does not work yet.
 
 ## Version 1 technical standard
 
@@ -121,4 +119,4 @@ docs/                      # Architecture, policies and decisions
 
 ## Current milestone
 
-Build one “golden path” component from source review through license verification, adaptation, preview, automated checks, registry publication, and installation into a clean React project.
+Expand the Registry from the verified Flight Status Card golden path while keeping the same license, provenance, preview, installation, responsive, accessibility, and quality requirements for every accepted component.

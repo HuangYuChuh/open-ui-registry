@@ -2,5 +2,73 @@
   "$schema": "./schema/registry-index.schema.json",
   "schemaVersion": "1.0.0",
   "name": "open-ui-registry",
-  "items": []
+  "items": [
+    {
+      "schemaVersion": "1.0.0",
+      "name": "flight-status-card",
+      "title": "Flight Status Card",
+      "description": "A responsive flight progress card with dot-matrix airport codes, ETA context, theme tokens, and reduced-motion support.",
+      "status": "verified",
+      "categories": ["data-display", "travel"],
+      "tags": ["flight", "progress", "status", "motion", "dashboard"],
+      "runtime": {
+        "framework": "react",
+        "language": "typescript",
+        "styling": ["tailwind-css", "css-variables"],
+        "clientComponent": true,
+        "ssrCompatible": true
+      },
+      "files": [
+        {
+          "path": "packages/registry/src/components/flight-status-card.tsx",
+          "role": "component"
+        },
+        {
+          "path": "packages/registry/licenses/flight-status-card.MIT",
+          "role": "license"
+        },
+        {
+          "path": "docs/components/flight-status-card.md",
+          "role": "notice"
+        }
+      ],
+      "dependencies": {
+        "npm": ["clsx@^2.1.1", "motion@^12.42.2", "tailwind-merge@^3.6.0"],
+        "registry": []
+      },
+      "provenance": {
+        "author": "Harsh Jadhav",
+        "demoUrl": "https://componentry.dev/docs/components/flight-status-card",
+        "repositoryUrl": "https://github.com/harshjdhv/componentry",
+        "sourceUrl": "https://github.com/harshjdhv/componentry/blob/0c90c9b9e624c483d434cdb85df084fd399f24c3/apps/web/public/r/flight-status-card.json",
+        "upstreamVersion": "componentry main at 2026-07-21",
+        "upstreamCommit": "0c90c9b9e624c483d434cdb85df084fd399f24c3",
+        "retrievedAt": "2026-07-21",
+        "modified": true,
+        "modifications": [
+          "Migrated the animation import from framer-motion to motion/react.",
+          "Replaced fixed product colors with component-scoped CSS design tokens that have safe defaults and remain consumer-overridable.",
+          "Consolidated separate light and dark implementations into one token-adaptive component.",
+          "Reworked the route and ETA layout for narrow mobile widths.",
+          "Added progress semantics, screen-reader route context, reduced-motion behavior, and unique SVG IDs.",
+          "Clamped progress to 0-100 and corrected the default remaining-time label."
+        ]
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/harshjdhv/componentry/blob/0c90c9b9e624c483d434cdb85df084fd399f24c3/LICENSE",
+        "noticeFile": "packages/registry/licenses/flight-status-card.MIT",
+        "redistributionReviewed": true
+      },
+      "quality": {
+        "typecheck": true,
+        "build": true,
+        "preview": true,
+        "responsive": true,
+        "accessibility": true,
+        "darkMode": true,
+        "visualRegression": false
+      }
+    }
+  ]
 }
