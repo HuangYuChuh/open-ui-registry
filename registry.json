@@ -2,5 +2,38 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "open-ui-registry",
   "homepage": "https://github.com/HuangYuChuh/open-ui-registry",
-  "items": []
+  "items": [
+    {
+      "name": "flight-status-card",
+      "type": "registry:ui",
+      "title": "Flight Status Card",
+      "description": "A responsive flight progress card with dot-matrix airport codes, ETA context, theme tokens, and reduced-motion support.",
+      "dependencies": [
+        "clsx@^2.1.1",
+        "motion@^12.42.2",
+        "tailwind-merge@^3.6.0"
+      ],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "packages/registry/src/components/flight-status-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flight-status-card.tsx"
+        },
+        {
+          "path": "packages/registry/licenses/flight-status-card.MIT",
+          "type": "registry:file",
+          "target": "components/ui/flight-status-card.LICENSE"
+        }
+      ],
+      "tailwind": {},
+      "cssVars": {},
+      "meta": {
+        "author": "Harsh Jadhav",
+        "license": "MIT",
+        "source": "https://github.com/harshjdhv/componentry"
+      }
+    }
+  ]
 }

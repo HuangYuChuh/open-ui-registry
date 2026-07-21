@@ -1,3 +1,6 @@
+import { FlightStatusCard } from "@open-ui-registry/registry/flight-status-card";
+import Link from "next/link";
+
 const principles = [
   {
     index: "01",
@@ -65,7 +68,7 @@ export default function Home() {
         <section className="mx-auto grid min-h-[calc(100dvh-4rem)] w-full max-w-7xl content-between px-5 py-10 sm:px-8 sm:py-14 lg:py-16">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
             <span className="size-2 rounded-full bg-accent shadow-[0_0_20px_var(--accent)]" />
-            Foundation ready · awaiting first component
+            Registry live · first verified component
           </div>
 
           <div className="py-20 sm:py-28 lg:py-36">
@@ -100,6 +103,48 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-y border-border/70 bg-surface">
+          <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:py-28">
+            <div>
+              <p className="text-xs uppercase tracking-[0.16em] text-accent">
+                Component / 01
+              </p>
+              <h2 className="mt-5 text-4xl font-bold leading-tight tracking-[-0.06em] sm:text-6xl">
+                Flight Status Card
+              </h2>
+              <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
+                The first golden-path component is installable source, not a
+                screenshot. It includes provenance, an MIT notice, responsive
+                behavior, accessibility semantics, theme tokens, and reduced
+                motion support.
+              </p>
+              <Link
+                className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-md bg-accent px-5 text-sm font-bold text-accent-foreground outline-none transition-colors hover:bg-accent-strong focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                href="/components/flight-status-card"
+              >
+                View component
+                <ArrowIcon />
+              </Link>
+            </div>
+            <div className="flex min-h-[380px] items-center justify-center rounded-2xl border border-border bg-background p-4 sm:p-8">
+              <FlightStatusCard
+                arrivalCity="Hong Kong"
+                arrivalCode="HKG"
+                arrivalTime="TUE, 9:35 AM"
+                departureCity="Shanghai"
+                departureCode="PVG"
+                departureTime="TUE, 6:50 AM"
+                eta="ETA 9:35 AM"
+                nextEvent="LANDING IN"
+                nextEventTime="1:12H"
+                progress={62}
+                remainingTime="1H 12M"
+                timezone="Hong Kong Time"
+              />
+            </div>
+          </div>
+        </section>
+
         <section
           aria-labelledby="distribution-title"
           className="border-y border-border/70 bg-surface"
@@ -125,8 +170,8 @@ export default function Home() {
                 </code>
               </div>
               <p className="mt-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Registry will use the standard shadcn distribution protocol.
-                A custom CLI or MCP layer will only add search, selection, and
+                The Registry uses the standard shadcn distribution protocol. A
+                custom CLI or MCP layer will only add search, selection, and
                 verification workflows—not create a second inventory.
               </p>
             </div>
@@ -140,10 +185,10 @@ export default function Home() {
                 Current inventory
               </p>
               <p className="mt-4 text-[clamp(4rem,12vw,9rem)] font-bold leading-none tracking-[-0.08em]">
-                00
+                01
               </p>
               <p className="mt-4 text-sm text-muted-foreground">
-                verified components — deliberately honest at foundation stage.
+                verified component · the golden path is now operational.
               </p>
             </div>
             <a
