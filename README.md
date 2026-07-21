@@ -14,6 +14,10 @@ Current verified component count: **0**. The first executable component will be 
 
 Repository: [github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
 
+Live foundation site: [43.161.217.100:8088](http://43.161.217.100:8088/)
+
+Live Registry index: [43.161.217.100:8088/r/registry.json](http://43.161.217.100:8088/r/registry.json)
+
 ## Intended experience
 
 The first release will expose a shadcn-compatible source registry. A component should eventually be installable with a command similar to:
