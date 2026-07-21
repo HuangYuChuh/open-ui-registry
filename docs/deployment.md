@@ -6,10 +6,12 @@ The foundation site is a static Next.js export served by Nginx in Docker.
 
 - Provider: Tencent Cloud Lighthouse
 - Region: Hong Kong
-- Public URL: `http://43.161.217.100:8088/`
-- Registry URL: `http://43.161.217.100:8088/r/registry.json`
+- Public URL: `https://ui.kelin.center/`
+- Registry URL: `https://ui.kelin.center/r/registry.json`
+- Ingress: Cloudflare Tunnel `kelin-newsletter-hk`
+- Origin: `http://127.0.0.1:8088`
 - Container: `open-ui-registry`
-- Public firewall rule: TCP `8088`
+- Public firewall rule: not required; port `8088` is loopback-only
 
 ## Why static export
 

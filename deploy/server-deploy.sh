@@ -58,7 +58,7 @@ docker_cmd run \
   --detach \
   --name "$CURRENT_CONTAINER" \
   --restart unless-stopped \
-  --publish "${PUBLIC_PORT}:80" \
+  --publish "127.0.0.1:${PUBLIC_PORT}:80" \
   --memory "96m" \
   --label "org.opencontainers.image.revision=${REVISION}" \
   "$IMAGE" >/dev/null
@@ -73,7 +73,7 @@ if ! wait_for_http "http://127.0.0.1:${PUBLIC_PORT}/"; then
       --detach \
       --name "$CURRENT_CONTAINER" \
       --restart unless-stopped \
-      --publish "${PUBLIC_PORT}:80" \
+      --publish "127.0.0.1:${PUBLIC_PORT}:80" \
       --memory "96m" \
       "$PREVIOUS_IMAGE" >/dev/null
   fi

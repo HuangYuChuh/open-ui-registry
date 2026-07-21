@@ -14,9 +14,9 @@ Current verified component count: **0**. The first executable component will be 
 
 Repository: [github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
 
-Live foundation site: [43.161.217.100:8088](http://43.161.217.100:8088/)
+Live foundation site: [ui.kelin.center](https://ui.kelin.center/)
 
-Live Registry index: [43.161.217.100:8088/r/registry.json](http://43.161.217.100:8088/r/registry.json)
+Live Registry index: [ui.kelin.center/r/registry.json](https://ui.kelin.center/r/registry.json)
 
 ## Intended experience
 
