@@ -1,0 +1,6 @@
+{
+  "$schema": "./schema/registry-index.schema.json",
+  "schemaVersion": "1.0.0",
+  "name": "open-ui-registry",
+  "items": []
+}

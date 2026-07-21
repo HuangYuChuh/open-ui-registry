@@ -1,0 +1,59 @@
+name: Component proposal
+description: Propose an open-source component for adaptation and inclusion
+title: "[Component]: "
+labels:
+  - component-proposal
+body:
+  - type: input
+    id: demo
+    attributes:
+      label: Demo URL
+      description: Link to the original component demo.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: Link to the exact repository or source file.
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Original author or organization
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: Provide the SPDX identifier and a link to the upstream license declaration.
+    validations:
+      required: true
+  - type: textarea
+    id: product-use
+    attributes:
+      label: Product use
+      description: What frontend product or interaction problem does this component solve?
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Technical dependencies
+      description: Framework, styling system, animation engine, icons, providers, or other runtime requirements.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Known limitations
+      description: Accessibility, responsive, SSR, performance, maintenance, or licensing concerns.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Submission confirmation
+      options:
+        - label: I have linked an explicit upstream license and have not assumed that public source means open source.
+          required: true
