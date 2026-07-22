@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "categories": [
+    {
+      "id": "layout",
+      "label": "Layout",
+      "description": "Page structure, containers, grids, split views, and resizable regions."
+    },
+    {
+      "id": "navigation",
+      "label": "Navigation",
+      "description": "Menus, tabs, breadcrumbs, pagination, and wayfinding patterns."
+    },
+    {
+      "id": "input",
+      "label": "Input & Forms",
+      "description": "Fields, selectors, editors, pickers, uploads, and form workflows."
+    },
+    {
+      "id": "data-display",
+      "label": "Data Display",
+      "description": "Cards, tables, charts, timelines, metrics, and structured summaries."
+    },
+    {
+      "id": "feedback",
+      "label": "Feedback & Status",
+      "description": "Progress, alerts, loading, validation, results, and system states."
+    },
+    {
+      "id": "overlay",
+      "label": "Overlay & Disclosure",
+      "description": "Dialogs, drawers, popovers, tooltips, and progressively revealed content."
+    },
+    {
+      "id": "media",
+      "label": "Media & Content",
+      "description": "Image, video, audio, document, gallery, and rich-content experiences."
+    },
+    {
+      "id": "motion",
+      "label": "Motion & Effects",
+      "description": "Transitions, spatial interactions, visual effects, and animated primitives."
+    },
+    {
+      "id": "utility",
+      "label": "Utilities",
+      "description": "Accessibility helpers, technical primitives, and cross-category tools."
+    }
+  ],
+  "domains": [
+    { "id": "general", "label": "General product UI" },
+    { "id": "ai", "label": "AI products" },
+    { "id": "commerce", "label": "Commerce" },
+    { "id": "finance", "label": "Finance" },
+    { "id": "travel", "label": "Travel" },
+    { "id": "social", "label": "Social" },
+    { "id": "productivity", "label": "Productivity" },
+    { "id": "developer-tools", "label": "Developer tools" }
+  ]
+}

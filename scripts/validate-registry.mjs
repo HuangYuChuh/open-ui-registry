@@ -7,15 +7,16 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = async (relativePath) =>
   JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
 
-const [index, distribution] = await Promise.all([
+const [index, distribution, taxonomy] = await Promise.all([
   readJson("registry/index.json"),
   readJson("registry.json"),
+  readJson("registry/taxonomy.json"),
 ]);
 
 const errors = [];
 
-if (index.schemaVersion !== "1.0.0") {
-  errors.push("registry/index.json must use schemaVersion 1.0.0");
+if (index.schemaVersion !== "1.1.0") {
+  errors.push("registry/index.json must use schemaVersion 1.1.0");
 }
 
 if (!Array.isArray(index.items) || !Array.isArray(distribution.items)) {
@@ -23,6 +24,18 @@ if (!Array.isArray(index.items) || !Array.isArray(distribution.items)) {
 }
 
 const governanceNames = new Set();
+const categoryIds = new Set(
+  (taxonomy.categories ?? []).map((category) => category.id),
+);
+const domainIds = new Set((taxonomy.domains ?? []).map((domain) => domain.id));
+
+if (categoryIds.size !== (taxonomy.categories ?? []).length) {
+  errors.push("registry/taxonomy.json contains duplicate category ids");
+}
+
+if (domainIds.size !== (taxonomy.domains ?? []).length) {
+  errors.push("registry/taxonomy.json contains duplicate domain ids");
+}
 
 for (const item of index.items ?? []) {
   const requiredFields = [
@@ -30,6 +43,7 @@ for (const item of index.items ?? []) {
     "title",
     "description",
     "status",
+    "classification",
     "runtime",
     "files",
     "dependencies",
@@ -49,6 +63,18 @@ for (const item of index.items ?? []) {
       errors.push(`Duplicate governance item: ${item.name}`);
     }
     governanceNames.add(item.name);
+  }
+
+  if (!categoryIds.has(item.classification?.category)) {
+    errors.push(
+      `${item.name}: unknown category ${item.classification?.category ?? "missing"}`,
+    );
+  }
+
+  for (const domain of item.classification?.domains ?? []) {
+    if (!domainIds.has(domain)) {
+      errors.push(`${item.name}: unknown domain ${domain}`);
+    }
   }
 
   if (item.status === "verified") {

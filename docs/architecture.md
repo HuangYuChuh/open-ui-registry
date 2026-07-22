@@ -32,6 +32,16 @@ The web application provides discovery, documentation, live previews, responsive
 
 The Registry contains component source, metadata, dependency declarations, provenance, license status, and quality status. It is the authoritative source.
 
+### Classification taxonomy
+
+Discovery uses three separate layers so unlike concepts do not get mixed into one tag list:
+
+1. **Category** describes what the component does in the interface, such as Data Display or Navigation.
+2. **Domain** describes the product context where it may be useful, such as Travel or Commerce.
+3. **Capabilities** are derived from runtime and quality metadata, such as animated, responsive, accessible, or dark-mode ready.
+
+`registry/taxonomy.json` is the canonical list of categories and domains. Each Registry item declares one primary category, one subcategory, one or more domains, and reusable product patterns. Free-form tags remain search synonyms rather than navigation structure.
+
 ### Installer
 
 Version 1 should first use the existing shadcn Registry protocol. A custom CLI should be added only when the project needs workflow that the shadcn CLI cannot provide.

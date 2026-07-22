@@ -1,15 +1,20 @@
 {
   "$schema": "./schema/registry-index.schema.json",
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "name": "open-ui-registry",
   "items": [
     {
-      "schemaVersion": "1.0.0",
+      "schemaVersion": "1.1.0",
       "name": "flight-status-card",
       "title": "Flight Status Card",
       "description": "A responsive flight progress card with dot-matrix airport codes, ETA context, theme tokens, and reduced-motion support.",
       "status": "verified",
-      "categories": ["data-display", "travel"],
+      "classification": {
+        "category": "data-display",
+        "subcategory": "status-and-progress",
+        "domains": ["travel"],
+        "patterns": ["dashboard", "detail-view", "status-summary"]
+      },
       "tags": ["flight", "progress", "status", "motion", "dashboard"],
       "runtime": {
         "framework": "react",

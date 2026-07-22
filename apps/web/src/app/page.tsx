@@ -1,212 +1,116 @@
-import { FlightStatusCard } from "@open-ui-registry/registry/flight-status-card";
-import Link from "next/link";
+import { CatalogExplorer } from "./_components/catalog-explorer";
+import { SiteHeader } from "./_components/site-header";
+import { catalogItems, catalogTaxonomy } from "@/lib/catalog-data";
 
-const principles = [
+const classificationLayers = [
   {
     index: "01",
-    title: "Installable source",
+    title: "Component category",
     description:
-      "Every verified component enters the consumer project as editable React and TypeScript source.",
+      "The stable navigation layer: what the component does in an interface, such as Data Display, Input, or Navigation.",
   },
   {
     index: "02",
-    title: "Traceable provenance",
+    title: "Product context",
     description:
-      "Author, upstream URL, version, license, and local modifications travel with every component.",
+      "Where the component may be useful, such as Travel, Commerce, AI products, or Developer tools.",
   },
   {
     index: "03",
-    title: "Verified integration",
+    title: "Verified capabilities",
     description:
-      "A visual demo is not enough. Components must build, respond, and pass the required quality gates.",
+      "What has actually been checked: responsive behavior, accessibility, dark mode, SSR compatibility, and motion.",
   },
 ];
-
-function ArrowIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="size-4"
-      fill="none"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M4 12 12 4m0 0H5m7 0v7"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
 
 export default function Home() {
   return (
     <div className="min-h-dvh overflow-x-hidden bg-background text-foreground">
-      <header className="border-b border-border/70">
-        <div className="mx-auto flex min-h-16 w-full max-w-7xl items-center justify-between px-5 sm:px-8">
-          <a
-            className="rounded-sm text-sm font-bold tracking-[-0.04em] outline-none transition-colors hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-            href="#top"
-          >
-            OPEN UI REGISTRY
-          </a>
-          <a
-            className="flex min-h-11 cursor-pointer items-center gap-2 rounded-md px-3 text-xs text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
-            href="https://github.com/HuangYuChuh/open-ui-registry"
-            rel="noreferrer"
-            target="_blank"
-          >
-            GitHub
-            <ArrowIcon />
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
-      <main id="top">
-        <section className="mx-auto grid min-h-[calc(100dvh-4rem)] w-full max-w-7xl content-between px-5 py-10 sm:px-8 sm:py-14 lg:py-16">
-          <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-            <span className="size-2 rounded-full bg-accent shadow-[0_0_20px_var(--accent)]" />
-            Registry live · first verified component
-          </div>
-
-          <div className="py-20 sm:py-28 lg:py-36">
-            <p className="mb-6 text-xs uppercase tracking-[0.16em] text-accent">
-              Source-code component registry
-            </p>
-            <h1 className="max-w-6xl text-[clamp(3.2rem,10vw,9rem)] font-bold leading-[0.86] tracking-[-0.08em] text-balance">
-              Components you can actually ship.
+      <main id="main-content">
+        <section className="mx-auto grid w-full max-w-[1440px] gap-8 px-5 py-8 sm:px-8 sm:py-12 md:grid-cols-[minmax(0,1.1fr)_minmax(300px,0.9fr)] md:items-end lg:gap-10 lg:py-14">
+          <div>
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+              <span className="size-2 rounded-full bg-accent shadow-[0_0_20px_var(--accent)]" />
+              Source-code component catalog
+            </div>
+            <h1 className="mt-6 max-w-5xl text-[clamp(2.75rem,6vw,5.5rem)] font-bold leading-[0.92] tracking-[-0.075em] text-balance">
+              Find components by what they do.
             </h1>
-            <p className="mt-10 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              A curated open-source registry that turns scattered frontend
-              components into installable, attributable, and verified product
-              code.
+          </div>
+
+          <div className="border-l border-border pl-6 sm:pl-8">
+            <p className="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+              A curated Registry of worth-keeping open-source components. Search by interface
+              role, filter by product context, and install editable source directly into your
+              project.
             </p>
-          </div>
-
-          <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-3">
-            {principles.map((principle) => (
-              <article
-                className="min-h-56 bg-surface p-6 transition-colors duration-200 hover:bg-muted sm:p-8"
-                key={principle.index}
-              >
-                <p className="text-xs text-accent">/{principle.index}</p>
-                <h2 className="mt-12 text-lg font-bold tracking-[-0.04em]">
-                  {principle.title}
-                </h2>
-                <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
-                  {principle.description}
+            <p className="mt-5 text-xs uppercase tracking-[0.12em] text-muted-foreground sm:hidden">
+              01 verified · 09 categories · editable source
+            </p>
+            <div className="mt-8 hidden grid-cols-3 gap-px overflow-hidden rounded-xl border border-border bg-border text-center sm:grid">
+              <div className="bg-surface px-3 py-4">
+                <p className="text-2xl font-bold tracking-[-0.05em]">
+                  {String(catalogItems.length).padStart(2, "0")}
                 </p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="border-y border-border/70 bg-surface">
-          <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:py-28">
-            <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-accent">
-                Component / 01
-              </p>
-              <h2 className="mt-5 text-4xl font-bold leading-tight tracking-[-0.06em] sm:text-6xl">
-                Flight Status Card
-              </h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
-                The first golden-path component is installable source, not a
-                screenshot. It includes provenance, an MIT notice, responsive
-                behavior, accessibility semantics, theme tokens, and reduced
-                motion support.
-              </p>
-              <Link
-                className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-md bg-accent px-5 text-sm font-bold text-accent-foreground outline-none transition-colors hover:bg-accent-strong focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                href="/components/flight-status-card"
-              >
-                View component
-                <ArrowIcon />
-              </Link>
-            </div>
-            <div className="flex min-h-[380px] items-center justify-center rounded-2xl border border-border bg-background p-4 sm:p-8">
-              <FlightStatusCard
-                arrivalCity="Hong Kong"
-                arrivalCode="HKG"
-                arrivalTime="TUE, 9:35 AM"
-                departureCity="Shanghai"
-                departureCode="PVG"
-                departureTime="TUE, 6:50 AM"
-                eta="ETA 9:35 AM"
-                nextEvent="LANDING IN"
-                nextEventTime="1:12H"
-                progress={62}
-                remainingTime="1H 12M"
-                timezone="Hong Kong Time"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section
-          aria-labelledby="distribution-title"
-          className="border-y border-border/70 bg-surface"
-        >
-          <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-28">
-            <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-accent">
-                Distribution contract
-              </p>
-              <h2
-                className="mt-5 max-w-md text-3xl font-bold leading-tight tracking-[-0.06em] sm:text-5xl"
-                id="distribution-title"
-              >
-                Own the code after install.
-              </h2>
-            </div>
-
-            <div className="self-end">
-              <div className="overflow-x-auto rounded-xl border border-border bg-background p-5 sm:p-6">
-                <code className="whitespace-nowrap text-sm text-foreground">
-                  <span className="select-none text-accent">$</span>{" "}
-                  pnpm dlx shadcn@latest add &lt;component-url&gt;
-                </code>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-wide text-muted-foreground">
+                  Verified
+                </p>
               </div>
-              <p className="mt-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-                The Registry uses the standard shadcn distribution protocol. A
-                custom CLI or MCP layer will only add search, selection, and
-                verification workflows—not create a second inventory.
-              </p>
+              <div className="bg-surface px-3 py-4">
+                <p className="text-2xl font-bold tracking-[-0.05em]">
+                  {String(catalogTaxonomy.categories.length).padStart(2, "0")}
+                </p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-wide text-muted-foreground">
+                  Categories
+                </p>
+              </div>
+              <div className="bg-surface px-3 py-4">
+                <p className="text-2xl font-bold tracking-[-0.05em]">CODE</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-wide text-muted-foreground">
+                  Editable source
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-          <div className="grid gap-10 border-b border-border pb-16 lg:grid-cols-[1fr_auto] lg:items-end">
+        <CatalogExplorer />
+
+        <section className="mx-auto w-full max-w-[1440px] px-5 py-16 sm:px-8 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                Current inventory
+              <p className="text-xs uppercase tracking-[0.16em] text-accent">
+                Classification contract
               </p>
-              <p className="mt-4 text-[clamp(4rem,12vw,9rem)] font-bold leading-none tracking-[-0.08em]">
-                01
-              </p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                verified component · the golden path is now operational.
-              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.06em] sm:text-5xl">
+                One component, three ways to understand it.
+              </h2>
             </div>
-            <a
-              className="flex min-h-12 w-fit cursor-pointer items-center gap-3 rounded-md bg-accent px-5 text-sm font-bold text-accent-foreground outline-none transition-colors hover:bg-accent-strong focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-              href="https://github.com/HuangYuChuh/open-ui-registry/issues/new?template=component-proposal.yml"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Propose a component
-              <ArrowIcon />
-            </a>
+
+            <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-3">
+              {classificationLayers.map((layer) => (
+                <article className="bg-surface p-6 sm:p-7" key={layer.index}>
+                  <p className="text-xs text-accent">/{layer.index}</p>
+                  <h3 className="mt-10 text-lg font-bold tracking-[-0.04em]">
+                    {layer.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                    {layer.description}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-5 pb-10 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p>Original platform code: MIT License.</p>
-        <p>Third-party components retain their upstream licenses.</p>
+      <footer className="border-t border-border/70">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-3 px-5 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <p>Original platform code: MIT License.</p>
+          <p>Third-party components retain their upstream licenses and provenance.</p>
+        </div>
       </footer>
     </div>
   );
