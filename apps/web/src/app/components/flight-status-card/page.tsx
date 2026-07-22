@@ -2,6 +2,13 @@ import {
   FlightStatusCard,
   type FlightStatusCardProps,
 } from "@open-ui-registry/registry/flight-status-card";
+import { SiteHeader } from "@/app/_components/site-header";
+import {
+  catalogItems,
+  catalogTaxonomy,
+  getCatalogCapabilities,
+  humanizeSlug,
+} from "@/lib/catalog-data";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -13,6 +20,25 @@ export const metadata: Metadata = {
 
 const installCommand =
   "pnpm dlx shadcn@latest add https://ui.kelin.center/r/flight-status-card.json";
+
+const catalogItem =
+  catalogItems.find((item) => item.name === "flight-status-card") ??
+  (() => {
+    throw new Error("Missing catalog metadata for flight-status-card");
+  })();
+
+const category = catalogTaxonomy.categories.find(
+  (item) => item.id === catalogItem.classification.category,
+);
+const productContexts = catalogItem.classification.domains.map(
+  (domain) => ({
+    id: domain,
+    label:
+      catalogTaxonomy.domains.find((item) => item.id === domain)?.label ??
+      humanizeSlug(domain),
+  }),
+);
+const capabilities = getCatalogCapabilities(catalogItem);
 
 const customRoute: FlightStatusCardProps = {
   departureCode: "PVG",
@@ -63,35 +89,33 @@ function ArrowIcon() {
 export default function FlightStatusCardPage() {
   return (
     <div className="min-h-dvh overflow-x-hidden bg-background text-foreground">
-      <header className="border-b border-border/70">
-        <div className="mx-auto flex min-h-16 w-full max-w-7xl items-center justify-between px-5 sm:px-8">
-          <Link
-            className="rounded-sm text-sm font-bold tracking-[-0.04em] outline-none transition-colors hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-            href="/"
-          >
-            OPEN UI REGISTRY
-          </Link>
-          <a
-            className="flex min-h-11 items-center gap-2 rounded-md px-3 text-xs text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
-            href="https://github.com/HuangYuChuh/open-ui-registry"
-            rel="noreferrer"
-            target="_blank"
-          >
-            GitHub
-            <ArrowIcon />
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
-      <main>
-        <section className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-24">
+      <main id="main-content">
+        <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 py-12 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-20">
           <div>
-            <Link
-              className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
-              href="/"
-            >
-              Components / 01
-            </Link>
+            <nav aria-label="Breadcrumb">
+              <ol className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                <li>
+                  <Link className="transition-colors hover:text-foreground" href="/#catalog">
+                    Components
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+                <li>
+                  <Link
+                    className="transition-colors hover:text-foreground"
+                    href={`/?category=${catalogItem.classification.category}#catalog`}
+                  >
+                    {category?.label ?? humanizeSlug(catalogItem.classification.category)}
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page" className="text-foreground">
+                  {catalogItem.title}
+                </li>
+              </ol>
+            </nav>
             <h1 className="mt-6 text-[clamp(3.3rem,8vw,7rem)] font-bold leading-[0.88] tracking-[-0.08em] text-balance">
               Flight Status Card
             </h1>
@@ -101,17 +125,63 @@ export default function FlightStatusCardPage() {
               source is responsive, token-driven, accessible, and editable.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-2 text-xs">
-              {["Verified", "React 19", "TypeScript", "Tailwind 4", "Motion", "MIT"].map(
-                (label) => (
-                  <span
-                    className="rounded-full border border-border bg-surface px-3 py-1.5 text-muted-foreground"
-                    key={label}
+            <div className="mt-10 grid gap-5 rounded-xl border border-border bg-surface p-5 sm:p-6">
+              <div>
+                <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                  Component category
+                </p>
+                <p className="mt-2 text-sm text-foreground">
+                  <Link
+                    className="rounded-sm text-accent outline-none hover:underline focus-visible:ring-2 focus-visible:ring-accent"
+                    href={`/?category=${catalogItem.classification.category}#catalog`}
                   >
-                    {label}
+                    {category?.label ?? humanizeSlug(catalogItem.classification.category)}
+                  </Link>
+                  <span className="text-muted-foreground">
+                    {" "}/ {humanizeSlug(catalogItem.classification.subcategory)}
                   </span>
-                ),
-              )}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                  Product context
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {productContexts.map((context) => (
+                    <Link
+                      className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground outline-none transition-colors duration-200 hover:border-accent/60 hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
+                      href={`/?domain=${context.id}#catalog`}
+                      key={context.id}
+                    >
+                      {context.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+                  Verified capabilities
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className="rounded-full border border-accent/50 bg-accent/10 px-3 py-1.5 text-xs font-bold text-accent">
+                    Verified
+                  </span>
+                  {capabilities.map((capability) => (
+                    <span
+                      className="rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground"
+                      key={capability}
+                    >
+                      {capability}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <p className="border-t border-border pt-4 text-xs text-muted-foreground">
+                React · TypeScript · Tailwind CSS · {catalogItem.license.spdx} licensed
+              </p>
             </div>
           </div>
 
