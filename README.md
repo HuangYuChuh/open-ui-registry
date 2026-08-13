@@ -75,6 +75,8 @@ export function ProductScreen() {
 - [贡献指南](CONTRIBUTING.md)
 - [第三方声明](THIRD_PARTY_NOTICES.md)
 - [部署说明](docs/deployment.md)
+- [首批组件路线图](docs/component-roadmap.md)
+- [文件上传队列候选审查](docs/candidates/file-upload-queue.md)
 
 ## 技术框架
 
