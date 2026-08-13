@@ -1,74 +1,74 @@
-# Design System Master File
+# 设计系统总则
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
-> If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
-
----
-
-**Project:** Open UI Registry
-**Generated:** 2026-07-21 16:40:43
-**Category:** Design System/Component Library
+> **使用逻辑：**构建具体页面时，先检查 `design-system/pages/[page-name].md`。
+> 如果该文件存在，其中的规则**优先于**本总则。
+> 如果不存在，则严格遵循以下规则。
 
 ---
 
-## Global Rules
+**项目：** Open UI Registry
+**生成时间：** 2026-07-21 16:40:43
+**类别：** 设计系统/组件库
 
-### Color Palette
+---
 
-| Role | Hex | CSS Variable |
+## 全局规则
+
+### 色板
+
+| 用途 | Hex | CSS 变量 |
 |------|-----|--------------|
-| Primary | `#1E293B` | `--color-primary` |
-| On Primary | `#FFFFFF` | `--color-on-primary` |
-| Secondary | `#334155` | `--color-secondary` |
-| Accent/CTA | `#22C55E` | `--color-accent` |
-| Background | `#0F172A` | `--color-background` |
-| Foreground | `#F8FAFC` | `--color-foreground` |
-| Muted | `#272F42` | `--color-muted` |
-| Border | `#475569` | `--color-border` |
-| Destructive | `#EF4444` | `--color-destructive` |
-| Ring | `#1E293B` | `--color-ring` |
+| 主色 | `#1E293B` | `--color-primary` |
+| 主色上的内容 | `#FFFFFF` | `--color-on-primary` |
+| 次色 | `#334155` | `--color-secondary` |
+| 强调色/行动按钮 | `#22C55E` | `--color-accent` |
+| 背景 | `#0F172A` | `--color-background` |
+| 前景 | `#F8FAFC` | `--color-foreground` |
+| 弱化色 | `#272F42` | `--color-muted` |
+| 边框 | `#475569` | `--color-border` |
+| 危险操作 | `#EF4444` | `--color-destructive` |
+| 焦点环 | `#1E293B` | `--color-ring` |
 
-**Color Notes:** Code dark + run green
+**颜色说明：**代码深色 + 运行绿色
 
-### Typography
+### 字体排版
 
-- **Heading Font:** Space Mono
-- **Body Font:** Space Mono
-- **Mood:** brutalist, raw, technical, monospace, minimal, stark
+- **标题字体：** Space Mono
+- **正文字体：** Space Mono
+- **氛围：**粗野主义、原始、技术感、等宽、极简、鲜明
 - **Google Fonts:** [Space Mono + Space Mono](https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap)
 
-**CSS Import:**
+**CSS 导入：**
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 ```
 
-### Spacing Variables
+### 间距变量
 
-| Token | Value | Usage |
+| 令牌 | 值 | 用途 |
 |-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+| `--space-xs` | `4px` / `0.25rem` | 紧凑间距 |
+| `--space-sm` | `8px` / `0.5rem` | 图标间距、行内间距 |
+| `--space-md` | `16px` / `1rem` | 标准内边距 |
+| `--space-lg` | `24px` / `1.5rem` | 区块内边距 |
+| `--space-xl` | `32px` / `2rem` | 大间距 |
+| `--space-2xl` | `48px` / `3rem` | 区块外边距 |
+| `--space-3xl` | `64px` / `4rem` | 首屏内边距 |
 
-### Shadow Depths
+### 阴影层级
 
-| Level | Value | Usage |
+| 层级 | 值 | 用途 |
 |-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | 轻微抬升 |
+| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | 卡片、按钮 |
+| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | 模态框、下拉菜单 |
+| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | 首屏图片、精选卡片 |
 
 ---
 
-## Component Specs
+## 组件规范
 
-### Buttons
+### 按钮
 
 ```css
 /* Primary Button */
@@ -100,7 +100,7 @@
 }
 ```
 
-### Cards
+### 卡片
 
 ```css
 .card {
@@ -118,7 +118,7 @@
 }
 ```
 
-### Inputs
+### 输入框
 
 ```css
 .input {
@@ -136,7 +136,7 @@
 }
 ```
 
-### Modals
+### 模态框
 
 ```css
 .modal-overlay {
@@ -156,53 +156,53 @@
 
 ---
 
-## Style Guidelines
+## 风格指南
 
-**Style:** Exaggerated Minimalism
+**风格：**夸张极简主义
 
-**Keywords:** Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design
+**关键词：**大胆极简、超大字号、高对比度、留白、强势极简、宣言式设计
 
-**Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
+**适合：**时尚、建筑、作品集、代理机构落地页、奢侈品牌、编辑内容
 
-**Key Effects:** font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace
+**关键效果：**`font-size: clamp(3rem 10vw 12rem)`、`font-weight: 900`、`letter-spacing: -0.05em`、大量留白
 
-### Page Pattern
+### 页面模式
 
-**Pattern Name:** Minimal Single Column
+**模式名称：**极简单栏
 
-- **Conversion Strategy:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
-- **CTA Placement:** Center, large CTA button
-- **Section Order:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Poor documentation
-- ❌ No live preview
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
+- **转化策略：**聚焦单一行动按钮；大字号；大量留白；避免导航干扰；移动优先。
+- **行动按钮位置：**居中放置大型按钮
+- **区块顺序：**1. 首屏标题，2. 简短描述，3. 优势要点（最多 3 条），4. 行动按钮，5. 页脚
 
 ---
 
-## Pre-Delivery Checklist
+## 禁止模式
 
-Before delivering any UI code, verify:
+- ❌ 文档质量差
+- ❌ 没有实时预览
 
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+### 其他禁止模式
+
+- ❌ **用 Emoji 充当图标**——使用 SVG 图标（Heroicons、Lucide、Simple Icons）
+- ❌ **缺少 `cursor:pointer`**——所有可点击元素都必须设置
+- ❌ **悬停导致布局偏移**——避免会移动布局的缩放变换
+- ❌ **文字对比度过低**——最低保持 4.5:1
+- ❌ **状态瞬间变化**——始终使用 150–300ms 过渡
+- ❌ **焦点状态不可见**——键盘焦点必须清晰可见
+
+---
+
+## 交付前检查清单
+
+交付任何 UI 代码前，请确认：
+
+- [ ] 不使用 Emoji 充当图标（改用 SVG）
+- [ ] 所有图标来自一致的图标集（Heroicons/Lucide）
+- [ ] 所有可点击元素都有 `cursor-pointer`
+- [ ] 悬停状态具有平滑过渡（150–300ms）
+- [ ] 浅色模式文字对比度至少为 4.5:1
+- [ ] 键盘导航的焦点状态可见
+- [ ] 遵循 `prefers-reduced-motion`
+- [ ] 检查 375px、768px、1024px、1440px 响应式布局
+- [ ] 固定导航栏不遮挡内容
+- [ ] 移动端没有横向滚动

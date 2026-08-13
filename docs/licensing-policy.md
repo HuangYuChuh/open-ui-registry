@@ -1,14 +1,14 @@
-# Licensing Policy
+# 许可证政策
 
-## Core rule
+## 核心规则
 
-Open sourcing this repository does not grant permission to redistribute upstream code. Permission comes from the upstream license.
+将本仓库开源并不代表获得了再分发上游代码的许可。再分发权来自上游许可证。
 
-The repository's original platform code is MIT-licensed unless otherwise noted. Every redistributed component keeps its own license and attribution.
+除非另有说明，仓库的原创平台代码采用 MIT 许可证。每个再分发组件都保留自己的许可证和署名信息。
 
-## Default acceptance categories
+## 默认可接受类别
 
-The following licenses are generally suitable for review and inclusion when their notice requirements are preserved:
+保留其声明要求后，以下许可证通常适合进入审查和收录流程：
 
 - MIT
 - Apache-2.0
@@ -16,51 +16,51 @@ The following licenses are generally suitable for review and inclusion when thei
 - BSD-3-Clause
 - ISC
 
-Acceptance is not automatic. Review the exact upstream file, repository, version, and license scope.
+这不代表自动接受。必须审查确切的上游文件、仓库、版本和许可证适用范围。
 
-## Case-by-case or excluded by default
+## 逐案审查或默认排除
 
-The following require explicit legal and architecture review and should not enter the core Registry by default:
+以下情况需要明确的法律与架构审查，默认不得进入核心 Registry：
 
-- GPL, AGPL, LGPL, or other copyleft licenses;
-- MPL-2.0 or other file-level copyleft licenses;
-- Creative Commons licenses applied to source code;
-- licenses that restrict commercial use, modification, or redistribution;
-- custom licenses;
-- source with no license;
-- code copied only from a rendered website, social post, video, or screenshot;
-- trademarked brand assets, fonts, images, and icons whose rights are separate from the component code.
+- GPL、AGPL、LGPL 或其他著佐权许可证；
+- MPL-2.0 或其他文件级著佐权许可证；
+- 应用于源码的 Creative Commons 许可证；
+- 限制商业使用、修改或再分发的许可证；
+- 自定义许可证；
+- 没有许可证的源码；
+- 仅从渲染后网页、社交帖子、视频或截图中复制的代码；
+- 权利独立于组件代码的商标品牌资产、字体、图片和图标。
 
-## Required provenance fields
+## 必需的溯源字段
 
-Every redistributed component must record:
+每个再分发组件都必须记录：
 
-- original author or organization;
-- original demo URL;
-- source repository and source file URL;
-- upstream version, tag, or commit when available;
-- retrieval date;
-- SPDX license identifier;
-- license URL or bundled license file;
-- whether the component was modified;
-- material modifications made by this project.
+- 原作者或组织；
+- 原始演示 URL；
+- 源码仓库和源文件 URL；
+- 可获得时记录上游版本、标签或提交；
+- 获取日期；
+- SPDX 许可证标识；
+- 许可证 URL 或随附许可证文件；
+- 组件是否经过修改；
+- 本项目作出的实质性修改。
 
-## Modification rules
+## 修改规则
 
-Do not imply that an upstream author endorses the adapted component. Clearly label adaptations and preserve notices required by the upstream license.
+不得暗示上游作者认可适配后的组件。必须明确标注适配，并保留上游许可证要求的声明。
 
-## Missing-license rule
+## 缺失许可证规则
 
-If no license can be confirmed, do not copy or redistribute the source. A contributor may independently implement a component inspired by the visible behavior, but must not copy protected source, text, assets, or distinctive branding. The independent implementation must be reviewed as original project code.
+无法确认许可证时，不得复制或再分发源码。贡献者可以根据可见行为独立实现类似组件，但不得复制受保护的源码、文字、资产或独特品牌。独立实现必须作为项目原创代码接受审查。
 
-## Removal process
+## 移除流程
 
-If a rights holder reports an issue:
+如果权利人报告问题：
 
-1. Temporarily remove the component from public installation.
-2. Preserve internal provenance evidence for review.
-3. Verify the claim and upstream license.
-4. Restore, replace, or permanently remove the component.
-5. Publish a concise correction when users may have installed the affected version.
+1. 暂时停止该组件的公开安装。
+2. 保留内部溯源证据以供审查。
+3. 核实主张和上游许可证。
+4. 恢复、替换或永久移除该组件。
+5. 如果用户可能已经安装受影响版本，发布简明更正说明。
 
-This policy is an engineering and project-governance standard, not legal advice. Material uncertainty should be escalated before publication.
+本政策属于工程和项目治理标准，不构成法律意见。存在重大不确定性时，应在发布前升级处理。

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Open UI Registry",
+  title: "Open UI Registry｜开源 UI 组件库",
   description:
-    "Curated, verified, installable frontend components distributed as source code.",
+    "精选、验证并以源码形式安装的前端组件库。",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html data-scroll-behavior="smooth" lang="zh-CN">
       <body>{children}</body>
     </html>
   );

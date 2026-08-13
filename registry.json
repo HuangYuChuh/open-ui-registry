@@ -6,8 +6,8 @@
     {
       "name": "flight-status-card",
       "type": "registry:ui",
-      "title": "Flight Status Card",
-      "description": "A responsive flight progress card with dot-matrix airport codes, ETA context, theme tokens, and reduced-motion support.",
+      "title": "航班状态卡片",
+      "description": "响应式航班进度卡片，包含点阵机场代码、预计到达时间、主题令牌和减少动态效果支持。",
       "dependencies": [
         "clsx@^2.1.1",
         "motion@^12.42.2",

@@ -2,7 +2,7 @@
   "name": "open-ui-registry",
   "version": "0.0.0",
   "private": true,
-  "description": "Curated, verified, installable frontend components distributed as source code.",
+  "description": "精选、验证并以源码形式安装的前端组件库。",
   "packageManager": "pnpm@11.2.2",
   "engines": {
     "node": ">=22.0.0"

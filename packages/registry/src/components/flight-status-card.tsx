@@ -270,13 +270,13 @@ function normalizeAirportCode(code: string) {
 export function FlightStatusCard({
   departureCode = "YYZ",
   arrivalCode = "HND",
-  departureCity = "Toronto",
-  arrivalCity = "Tokyo",
-  departureTime = "MON, 6:14 PM",
-  arrivalTime = "TUE, 7:14 AM",
-  eta = "ETA 2:15 PM",
-  timezone = "Tokyo Time",
-  nextEvent = "DINNER IN",
+  departureCity = "多伦多",
+  arrivalCity = "东京",
+  departureTime = "周一 18:14",
+  arrivalTime = "周二 07:14",
+  eta = "预计 14:15 到达",
+  timezone = "东京时间",
+  nextEvent = "距离用餐",
   nextEventTime = "2:34H",
   progress = 45,
   remainingTime = "7H 01M",
@@ -359,7 +359,7 @@ export function FlightStatusCard({
 
       <div className="relative z-10 mt-5">
         <div
-          aria-label={`Flight progress: ${safeProgress}%`}
+          aria-label={`航班进度：${safeProgress}%`}
           aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={safeProgress}

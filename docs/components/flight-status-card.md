@@ -1,104 +1,79 @@
-# Flight Status Card
+# Flight Status Card（航班状态卡片）
 
-Flight Status Card is a responsive travel-status component for itinerary screens, airline dashboards, booking products, and trip assistants. It presents the route, schedule, ETA context, next event, progress, and remaining time in one compact card.
+航班状态卡片是一款响应式旅行状态组件，适用于行程页面、航空公司看板、预订产品和旅行助手。它在一张紧凑卡片中呈现航线、时刻、预计到达时间、下一事件、进度和剩余时间。
 
-## Install
+## 安装
 
 ```bash
 pnpm dlx shadcn@latest add https://ui.kelin.center/r/flight-status-card.json
 ```
 
-The installer adds editable source to `components/ui/flight-status-card.tsx`, installs `motion`, `clsx`, and `tailwind-merge`, and places the upstream MIT notice beside the component.
+安装器会把可编辑源码添加到 `components/ui/flight-status-card.tsx`，安装 `motion`、`clsx` 和 `tailwind-merge`，并将上游 MIT 声明放在组件旁边。
 
-## Usage
+## 用法
 
 ```tsx
 import { FlightStatusCard } from "@/components/ui/flight-status-card";
 
 export function TripOverview() {
-  return (
-    <FlightStatusCard
-      arrivalCity="Hong Kong"
-      arrivalCode="HKG"
-      arrivalTime="TUE, 9:35 AM"
-      departureCity="Shanghai"
-      departureCode="PVG"
-      departureTime="TUE, 6:50 AM"
-      eta="ETA 9:35 AM"
-      nextEvent="LANDING IN"
-      nextEventTime="1:12H"
-      progress={62}
-      remainingTime="1H 12M"
-      timezone="Hong Kong Time"
-    />
-  );
+  return <FlightStatusCard arrivalCity="香港" arrivalCode="HKG" departureCity="上海" departureCode="PVG" progress={62} remainingTime="1H 12M" />;
 }
 ```
 
-## Public API
+## 公开 API
 
-| Property | Type | Default |
+| 属性 | 类型 | 默认值 |
 | --- | --- | --- |
 | `departureCode` | `string` | `YYZ` |
 | `arrivalCode` | `string` | `HND` |
-| `departureCity` | `string` | `Toronto` |
-| `arrivalCity` | `string` | `Tokyo` |
-| `departureTime` | `string` | `MON, 6:14 PM` |
-| `arrivalTime` | `string` | `TUE, 7:14 AM` |
-| `eta` | `string` | `ETA 2:15 PM` |
-| `timezone` | `string` | `Tokyo Time` |
-| `nextEvent` | `string` | `DINNER IN` |
+| `departureCity` | `string` | `多伦多` |
+| `arrivalCity` | `string` | `东京` |
+| `departureTime` | `string` | `周一 18:14` |
+| `arrivalTime` | `string` | `周二 07:14` |
+| `eta` | `string` | `预计 14:15 到达` |
+| `timezone` | `string` | `东京时间` |
+| `nextEvent` | `string` | `距离用餐` |
 | `nextEventTime` | `string` | `2:34H` |
 | `progress` | `number` | `45` |
 | `remainingTime` | `string` | `7H 01M` |
-| `className` | `string` | none |
-| `style` | `FlightStatusCardStyle` | none |
+| `className` | `string` | 无 |
+| `style` | `FlightStatusCardStyle` | 无 |
 
-Airport codes are normalized to uppercase and limited to three characters. Progress values are clamped to the inclusive `0-100` range.
+机场代码会转换为大写并限制为三个字符。进度值会被限制在闭区间 `0-100` 内。
 
-## Theme contract
+## 主题契约
 
-The component includes a scoped dark flight-display palette, so it remains legible even
-when the consuming project uses different or incomplete shadcn theme variables. Override
-the component tokens through `className` or the typed `style` prop without changing its
-internals:
+组件包含作用域隔离的深色航班显示配色，因此使用方项目采用不同或不完整的 shadcn 主题变量时仍然清晰可读。可以通过 `className` 或具有类型的 `style` 属性覆盖组件令牌，无需修改内部代码。
 
-```tsx
-<FlightStatusCard
-  className="[--flight-card-accent:#38bdf8]"
-  style={{ "--flight-card-background": "#082f49" }}
-/>
-```
+可用令牌：
 
-Available tokens:
-
-- `--flight-card-accent` and `--flight-card-accent-foreground`
-- `--flight-card-background` and `--flight-card-foreground`
-- `--flight-card-muted` and `--flight-card-muted-foreground`
+- `--flight-card-accent` 和 `--flight-card-accent-foreground`
+- `--flight-card-background` 和 `--flight-card-foreground`
+- `--flight-card-muted` 和 `--flight-card-muted-foreground`
 - `--flight-card-border`
 
-## Responsive behavior
+## 响应式行为
 
-- At narrow widths, the ETA panel moves below the route so airport codes remain readable.
-- At `sm` and above, route and ETA content share one row.
-- The component is width-fluid with a maximum width of `520px`.
-- City names truncate instead of forcing horizontal overflow.
+- 在窄屏下，预计到达时间面板移到航线下方，保证机场代码可读。
+- 在 `sm` 及以上宽度，航线与预计到达时间共用一行。
+- 组件宽度流式变化，最大宽度为 `520px`。
+- 城市名称会截断，不会造成横向溢出。
 
-## Accessibility
+## 无障碍
 
-- The card is an `article` with a screen-reader route heading.
-- The progress track uses `role="progressbar"` and exposes its numeric value.
-- Dot-matrix SVGs are decorative; their airport-code text is separately announced.
-- Motion follows `prefers-reduced-motion` through Motion's `useReducedMotion` hook.
-- The component contains no fake interactive controls.
+- 卡片使用 `article`，并提供供屏幕阅读器读取的航线标题。
+- 进度轨道使用 `role="progressbar"` 并公开数值。
+- 点阵 SVG 仅作装饰，机场代码文本会单独播报。
+- 动效通过 Motion 的 `useReducedMotion` 遵循 `prefers-reduced-motion`。
+- 组件不包含伪交互控件。
 
-## Provenance and license
+## 来源与许可证
 
-- Original author: Harsh Jadhav
-- Original demo: <https://componentry.dev/docs/components/flight-status-card>
-- Source repository: <https://github.com/harshjdhv/componentry>
-- Reviewed commit: `0c90c9b9e624c483d434cdb85df084fd399f24c3`
-- License: MIT
-- Retrieved: 2026-07-21
+- 原作者：Harsh Jadhav
+- 原始演示：<https://componentry.dev/docs/components/flight-status-card>
+- 源码仓库：<https://github.com/harshjdhv/componentry>
+- 已审查提交：`0c90c9b9e624c483d434cdb85df084fd399f24c3`
+- 许可证：MIT
+- 获取日期：2026-07-21
 
-The adapted component is redistributed under the upstream MIT terms. See `packages/registry/licenses/flight-status-card.MIT` and `THIRD_PARTY_NOTICES.md`.
+适配组件沿用上游 MIT 条款再分发。参见 `packages/registry/licenses/flight-status-card.MIT` 和 `THIRD_PARTY_NOTICES.md`。

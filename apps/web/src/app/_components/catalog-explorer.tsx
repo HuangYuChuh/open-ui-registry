@@ -7,6 +7,7 @@ import {
   getCatalogCapabilities,
   humanizeSlug,
   itemHasDomain,
+  localizeStatus,
   type CatalogItem,
 } from "@/lib/catalog-data";
 import Link from "next/link";
@@ -41,25 +42,25 @@ function ComponentPreview({ name }: { name: string }) {
   if (name === "flight-status-card") {
     return (
       <FlightStatusCard
-        arrivalCity="Hong Kong"
+        arrivalCity="香港"
         arrivalCode="HKG"
-        arrivalTime="TUE, 9:35 AM"
-        departureCity="Shanghai"
+        arrivalTime="周二 09:35"
+        departureCity="上海"
         departureCode="PVG"
-        departureTime="TUE, 6:50 AM"
-        eta="ETA 9:35 AM"
-        nextEvent="LANDING IN"
+        departureTime="周二 06:50"
+        eta="预计 09:35 到达"
+        nextEvent="距离着陆"
         nextEventTime="1:12H"
         progress={62}
         remainingTime="1H 12M"
-        timezone="Hong Kong Time"
+        timezone="香港时间"
       />
     );
   }
 
   return (
     <div className="flex min-h-48 items-center justify-center rounded-xl border border-dashed border-border text-sm text-muted-foreground">
-      Preview coming soon
+      预览即将上线
     </div>
   );
 }
@@ -103,14 +104,14 @@ function ComponentCard({ item }: { item: CatalogItem }) {
             </p>
           </div>
           <span className="shrink-0 rounded-full border border-accent/50 bg-accent/10 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wide text-accent">
-            {item.status}
+            {localizeStatus(item.status)}
           </span>
         </div>
 
         <div className="mt-5 grid gap-4 border-t border-border pt-5 sm:grid-cols-2">
           <div>
             <p className="text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground">
-              Product context
+              产品场景
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {domains.map((domain) => (
@@ -125,7 +126,7 @@ function ComponentCard({ item }: { item: CatalogItem }) {
           </div>
           <div>
             <p className="text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground">
-              Verified capabilities
+              已验证能力
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {getCatalogCapabilities(item).map((capability) => (
@@ -147,14 +148,14 @@ function ComponentCard({ item }: { item: CatalogItem }) {
         </div>
 
         <p className="mt-3 text-[0.68rem] text-muted-foreground">
-          {item.runtime.framework} · {item.runtime.language} · {item.license.spdx} licensed
+          {item.runtime.framework} · {item.runtime.language} · {item.license.spdx} 许可证
         </p>
 
         <Link
           className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-4 text-sm font-bold text-accent-foreground outline-none transition-colors duration-200 hover:bg-accent-strong focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           href={`/components/${item.name}`}
         >
-          View details
+          查看详情
           <ArrowIcon />
         </Link>
       </div>
@@ -297,9 +298,9 @@ export function CatalogExplorer() {
         <aside className="hidden border-r border-border/70 px-6 py-10 lg:block xl:px-8">
           <div className="sticky top-24">
             <p className="text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-              Component category
+              组件类别
             </p>
-            <nav aria-label="Component categories" className="mt-4 space-y-1">
+            <nav aria-label="组件类别" className="mt-4 space-y-1">
               <button
                 aria-pressed={category === ALL_FILTER}
                 className={`flex min-h-11 w-full cursor-pointer items-center justify-between rounded-md px-3 text-left text-sm outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent ${
@@ -310,7 +311,7 @@ export function CatalogExplorer() {
                 onClick={() => chooseCategory(ALL_FILTER)}
                 type="button"
               >
-                <span>All components</span>
+                <span>全部组件</span>
                 <span className="text-xs">{catalogItems.length}</span>
               </button>
               {catalogTaxonomy.categories.map((item) => (
@@ -333,11 +334,11 @@ export function CatalogExplorer() {
 
             <div className="mt-10 border-t border-border pt-6">
               <p className="text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-                Why this split
+                为什么这样分类
               </p>
               <p className="mt-3 text-xs leading-5 text-muted-foreground">
-                Categories describe interface function. Product domains and verified
-                capabilities stay separate, so the catalog remains predictable as it grows.
+                组件类别描述界面功能，产品场景和已验证能力单独呈现，
+                让目录在持续扩充时仍然清晰、可预测。
               </p>
             </div>
           </div>
@@ -347,26 +348,26 @@ export function CatalogExplorer() {
           <div className="flex flex-col gap-5 border-b border-border pb-8 xl:flex-row xl:items-end xl:justify-between">
             <div>
               <p className="text-[0.68rem] uppercase tracking-[0.16em] text-accent">
-                Verified inventory
+                已验证组件
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-[-0.06em] sm:text-5xl" id="catalog-title">
-                {selectedCategory?.label ?? "All components"}
+                {selectedCategory?.label ?? "全部组件"}
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
                 {selectedCategory?.description ??
-                  "Search every verified component, then narrow by interface role and product context."}
+                  "搜索所有已验证组件，再按界面功能和产品场景缩小范围。"}
               </p>
             </div>
 
             <div className="relative w-full xl:max-w-md">
               <label className="sr-only" htmlFor="component-search">
-                Search components
+                搜索组件
               </label>
               <input
                 className="min-h-12 w-full rounded-xl border border-border bg-background py-3 pl-12 pr-4 text-base text-foreground outline-none transition-colors duration-200 placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/30"
                 id="component-search"
                 onChange={(event) => changeQuery(event.target.value)}
-                placeholder="Search by name, pattern, or scenario"
+                placeholder="按名称、模式或使用场景搜索"
                 type="search"
                 value={query}
               />
@@ -379,7 +380,7 @@ export function CatalogExplorer() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:hidden">
             <div>
               <label className="text-xs text-muted-foreground" htmlFor="mobile-category">
-                Category
+                组件类别
               </label>
               <select
                 className="mt-2 min-h-12 w-full cursor-pointer rounded-lg border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent focus:ring-2 focus:ring-accent/30"
@@ -387,7 +388,7 @@ export function CatalogExplorer() {
                 onChange={(event) => chooseCategory(event.target.value)}
                 value={category}
               >
-                <option value={ALL_FILTER}>All components ({catalogItems.length})</option>
+                <option value={ALL_FILTER}>全部组件（{catalogItems.length}）</option>
                 {catalogTaxonomy.categories.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.label} ({categoryCounts[item.id] ?? 0})
@@ -397,7 +398,7 @@ export function CatalogExplorer() {
             </div>
             <div>
               <label className="text-xs text-muted-foreground" htmlFor="mobile-domain">
-                Product context
+                产品场景
               </label>
               <select
                 className="mt-2 min-h-12 w-full cursor-pointer rounded-lg border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent focus:ring-2 focus:ring-accent/30"
@@ -405,7 +406,7 @@ export function CatalogExplorer() {
                 onChange={(event) => chooseDomain(event.target.value)}
                 value={domain}
               >
-                <option value={ALL_FILTER}>All contexts</option>
+                <option value={ALL_FILTER}>全部场景</option>
                 {visibleDomains.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.label} ({domainCounts[item.id] ?? 0})
@@ -416,7 +417,7 @@ export function CatalogExplorer() {
           </div>
 
           <div className="mt-6 hidden items-center gap-3 lg:flex">
-            <span className="text-xs text-muted-foreground">Product context</span>
+            <span className="text-xs text-muted-foreground">产品场景</span>
             <button
               aria-pressed={domain === ALL_FILTER}
               className={`min-h-10 cursor-pointer rounded-full border px-3 text-xs outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent ${
@@ -427,7 +428,7 @@ export function CatalogExplorer() {
               onClick={() => chooseDomain(ALL_FILTER)}
               type="button"
             >
-              All contexts
+              全部场景
             </button>
             {visibleDomains.map((item) => (
               <button
@@ -448,7 +449,7 @@ export function CatalogExplorer() {
 
           <div className="mt-8 flex items-center justify-between gap-4">
             <p aria-live="polite" className="text-sm text-muted-foreground">
-              {filteredItems.length} verified {filteredItems.length === 1 ? "component" : "components"}
+              已找到 {filteredItems.length} 个已验证组件
             </p>
             {(category !== ALL_FILTER || domain !== ALL_FILTER || query) && (
               <button
@@ -456,7 +457,7 @@ export function CatalogExplorer() {
                 onClick={clearFilters}
                 type="button"
               >
-                Clear filters
+                清除筛选
               </button>
             )}
           </div>
@@ -469,20 +470,20 @@ export function CatalogExplorer() {
             </div>
           ) : (
             <div className="mt-5 rounded-2xl border border-dashed border-border bg-background px-6 py-16 text-center sm:px-10">
-              <p className="text-xs uppercase tracking-[0.16em] text-accent">No match</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-accent">没有匹配结果</p>
               <h3 className="mt-4 text-2xl font-bold tracking-[-0.04em]">
-                No verified component fits these filters yet.
+                暂无符合这些条件的已验证组件。
               </h3>
               <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
-                Try another category or clear the search. Empty categories remain visible so
-                the catalog structure stays stable while the collection grows.
+                可以尝试其他类别或清除搜索。暂时为空的类别仍会显示，
+                以便组件库扩充时保持稳定的目录结构。
               </p>
               <button
                 className="mt-6 min-h-11 cursor-pointer rounded-md bg-accent px-4 text-sm font-bold text-accent-foreground outline-none transition-colors duration-200 hover:bg-accent-strong focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                 onClick={clearFilters}
                 type="button"
               >
-                View all components
+                查看全部组件
               </button>
             </div>
           )}
