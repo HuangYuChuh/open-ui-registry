@@ -1,114 +1,115 @@
-# Project Charter
+# 项目章程
 
-## Working name
+## 暂定名称
 
 Open UI Registry
 
-The name is provisional. Naming must not block validation of the core workflow.
+名称尚未最终确定，不应阻碍核心流程的验证。
 
-## Problem
+## 问题
 
-Useful frontend components are scattered across component libraries, animation libraries, demos, and individual repositories. A developer or product builder may like only a few components from each source and later forget where they came from.
+实用的前端组件散落在组件库、动画库、演示和个人仓库中。开发者或产品构建者可能只喜欢每个来源中的少数组件，之后却忘记它们来自哪里。
 
-A bookmark collection does not solve the real problem. The component still needs to be found again, understood, installed, adapted to the current design system, checked for licensing, and tested before it can ship.
+书签集合无法解决真正的问题。组件仍需被重新找到、理解和安装，还要适配当前设计系统、检查许可证并完成测试，才能用于发布。
 
-## Product promise
+## 产品承诺
 
-Any component marked `verified` can be installed as source code into a supported React project and used without manually reconstructing its dependencies, provenance, or basic integration steps.
+任何标记为 `verified`（已验证）的组件，都可以作为源码安装到受支持的 React 项目中，无需手动重建其依赖、溯源信息或基础集成步骤。
 
-## Primary users
+## 主要用户
 
-- Product builders who assemble frontend experiences from multiple design and motion sources.
-- Frontend developers who want editable source rather than a restrictive package API.
-- AI coding agents that need structured metadata to search, select, install, and validate components.
-- Component authors who want their open-source work to remain attributed while becoming easier to adopt.
+- 从多个设计与动效来源组装前端体验的产品构建者。
+- 希望获得可编辑源码，而不是受限包 API 的前端开发者。
+- 需要结构化元数据来搜索、选择、安装和验证组件的 AI 编程智能体。
+- 希望开源作品保留署名并更易采用的组件作者。
 
-## Version 1 scope
+## 第一版范围
 
-1. A public gallery with searchable component metadata and live previews.
-2. A shadcn-compatible source registry for React and TypeScript.
-3. A strict component intake and license-review process.
-4. A normalized component contract covering dependencies, styling, tokens, props, accessibility, and provenance.
-5. Automated checks for TypeScript, build success, responsive behavior, and registry metadata.
-6. Ten verified components covering both common product interactions and selected motion effects.
+1. 提供可搜索组件元数据和实时预览的公开组件库。
+2. 面向 React 与 TypeScript、兼容 shadcn 的源码 Registry。
+3. 严格的组件收录和许可证审查流程。
+4. 覆盖依赖、样式、令牌、属性、无障碍和溯源的规范化组件契约。
+5. 针对 TypeScript、构建结果、响应式行为和 Registry 元数据的自动检查。
+6. 十个已验证组件，覆盖常用产品交互和精选动效。
 
-## Out of scope for version 1
+## 第一版范围之外
 
-- Supporting React, Vue, Svelte, and Web Components simultaneously.
-- Mirroring entire third-party component libraries.
-- Publishing code that has no clear redistribution license.
-- Promising that a Registry or MCP entry alone proves product fit, accessibility, or performance.
-- Automatically scraping and republishing source code without human review.
+- 同时支持 React、Vue、Svelte 和 Web Components。
+- 镜像整个第三方组件库。
+- 发布没有明确再分发许可证的代码。
+- 承诺仅凭 Registry 或 MCP 条目即可证明产品适用性、无障碍或性能。
+- 未经人工审查自动抓取并重新发布源码。
 
-## Product principles
+## 产品原则
 
-### Installable beats collectible
+### 可安装胜过可收藏
 
-A component is not part of the product merely because it appears in the gallery. Only verified, installable source counts toward the core inventory.
+组件仅出现在展示站中并不代表已成为产品的一部分。只有经过验证且可安装的源码才计入核心库存。
 
-### Curated beats comprehensive
+### 精选胜过求全
 
-The project selects components that solve useful product or interaction problems. It does not compete on the total number of components.
+项目选择能够解决实际产品或交互问题的组件，不以组件总数竞争。
 
-### Adapted beats copied
+### 适配胜过复制
 
-External components are normalized to the supported technical standard. Upstream provenance and modifications remain visible.
+外部组件会被规范化到受支持的技术标准，同时保持上游来源和修改记录可见。
 
-### Verification beats visual novelty
+### 验证胜过视觉新奇
 
-A beautiful demo is insufficient. Build behavior, responsive behavior, accessibility, dependency cost, license status, and integration quality all matter.
+漂亮的演示并不足够。构建、响应式、无障碍、依赖成本、许可证状态和集成质量都同样重要。
 
-### Agent access is a delivery channel
+### 智能体访问是一种交付渠道
 
-CLI, MCP, and Skills make components easier to retrieve and install. They do not replace design judgment or quality validation.
+CLI、MCP 和 Skills 让组件更容易检索和安装，但不能取代设计判断或质量验证。
 
-## Milestones
+## 里程碑
 
-### M0 — Foundation
+### M0 — 基础建设
 
-- [x] Project charter
-- [x] Architecture decision
-- [x] Licensing policy
-- [x] Registry item schema
-- [x] Contribution workflow
-- [x] Public repository
-- [x] Next.js gallery foundation
-- [x] CI quality gate
+- [x] 项目章程
+- [x] 架构决策
+- [x] 许可证政策
+- [x] Registry 条目 Schema
+- [x] 贡献流程
+- [x] 公开仓库
+- [x] Next.js 组件库基础
+- [x] CI 质量门禁
 
-### M1 — Golden path
+### M1 — 完整基准流程
 
-- One legally redistributable component
-- Complete provenance record
-- Adapted React and TypeScript source
-- Workbench preview
-- Automated quality checks
-- Successful installation into a clean example project
+- 一个可合法再分发的组件
+- 完整溯源记录
+- 适配后的 React 与 TypeScript 源码
+- 工作台预览
+- 自动质量检查
+- 成功安装到全新的示例项目
 
-### M2 — Useful first collection
+### M2 — 实用的首批组件
 
-- Ten verified components
-- Search and category navigation
-- Public registry endpoint
-- Installation documentation
+- 十个已验证组件
+- 搜索和类别导航
+- 公开 Registry 端点
+- 安装文档
 
-### M3 — Agent access
+### M3 — 智能体访问
 
-- Machine-readable search API
-- MCP or Skill integration
-- Agent can select, install, and run verification commands
+- 机器可读的搜索 API
+- MCP 或 Skill 集成
+- 智能体能够选择、安装并运行验证命令
 
-## Version 1 success criteria
+## 第一版成功标准
 
-- A new user can discover and install a verified component without visiting the upstream website.
-- The installed component builds in a clean supported project.
-- Every redistributed file has an auditable source and license.
-- Each component declares its runtime dependencies and design-token expectations.
-- Removing the Registry service does not break already-installed components because applications own their installed source.
+- 新用户无需访问上游网站即可发现并安装已验证组件。
+- 安装后的组件能在全新受支持项目中完成构建。
+- 每个再分发文件都有可审计的来源和许可证。
+- 每个组件都声明运行时依赖和设计令牌要求。
+- 即使 Registry 服务下线，已安装组件也不会受影响，因为应用拥有安装后的源码。
 
-## Open decisions
+## 待定事项
 
-- Final project name and package namespace
-- Public GitHub organization or personal account
-- Preview site domain
-- The first ten components
-- Whether the first installer uses only the shadcn CLI or also ships a project-specific CLI
+- 最终项目名称和包命名空间
+- 使用公开 GitHub 组织还是个人账户
+- 预览站点域名
+- 首批十个组件
+- 首批组件槽位已在 `docs/component-roadmap.md` 中规划，具体上游实现仍需逐项完成许可证审查
+- 首个安装器仅使用 shadcn CLI，还是同时提供项目专用 CLI

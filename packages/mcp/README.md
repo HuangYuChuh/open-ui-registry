@@ -1,5 +1,5 @@
-# MCP package
+# MCP 包
 
-Reserved for Agent-facing search, selection, installation, and verification tools.
+为面向智能体的搜索、选择、安装和验证工具预留。
 
-MCP will consume the same Registry and governance metadata as the web gallery and CLI. It will not maintain a separate component inventory.
+MCP 将与 Web 组件库和 CLI 共用同一份 Registry 与治理元数据，不维护单独的组件清单。

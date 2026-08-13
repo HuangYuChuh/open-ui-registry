@@ -1,32 +1,32 @@
-# Open UI Registry
+# Open UI Registry（开源 UI 组件库）
 
-> Working title. The project name can change before the first public release.
+> 当前为暂定名称，首次公开发布前仍可能调整。
 
-Open UI Registry is an open-source, source-code registry for carefully selected frontend components from across the web.
+Open UI Registry 是一个开源的源码组件库，用于收录从互联网中精选的前端组件。
 
-Its goal is not to bookmark components. Its goal is to make every accepted component installable, editable, traceable to its upstream source, and safe to use in a real frontend project.
+它不只是收藏组件，而是让每个收录的组件都可安装、可编辑、可追溯至上游来源，并能安全地用于真实前端项目。
 
-## Project status
+## 项目状态
 
-The public repository and framework foundation are ready. The product scope, licensing policy, Registry metadata, Next.js gallery, responsive foundation page, validation scripts, and CI workflow are in place.
+公开仓库和框架基础已经就绪。产品范围、许可证政策、Registry 元数据、Next.js 展示站、响应式基础页面、验证脚本和 CI 工作流均已建立。
 
-Current verified component count: **1**. Flight Status Card is the first completed golden-path component.
+当前已验证组件数：**1**。航班状态卡片是首个完成完整流程的基准组件。
 
-Repository: [github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
+代码仓库：[github.com/HuangYuChuh/open-ui-registry](https://github.com/HuangYuChuh/open-ui-registry)
 
-Live foundation site: [ui.kelin.center](https://ui.kelin.center/)
+线上站点：[ui.kelin.center](https://ui.kelin.center/)
 
-Live Registry index: [ui.kelin.center/r/registry.json](https://ui.kelin.center/r/registry.json)
+线上 Registry 索引：[ui.kelin.center/r/registry.json](https://ui.kelin.center/r/registry.json)
 
-## Intended experience
+## 使用方式
 
-The Registry exposes shadcn-compatible component payloads. Install Flight Status Card with:
+Registry 提供与 shadcn 兼容的组件数据。安装航班状态卡片：
 
 ```bash
 pnpm dlx shadcn@latest add https://ui.kelin.center/r/flight-status-card.json
 ```
 
-After installation, the application owns the source code:
+安装后，源码归你的应用所有：
 
 ```tsx
 import { FlightStatusCard } from "@/components/ui/flight-status-card";
@@ -36,87 +36,89 @@ export function ProductScreen() {
 }
 ```
 
-## Version 1 technical standard
+## 第一版技术标准
 
 - React
 - TypeScript
 - Tailwind CSS
-- CSS variables for design tokens
-- Motion as the default animation dependency when animation is needed
-- Source-code installation rather than a closed runtime package
+- 使用 CSS 变量承载设计令牌
+- 需要动画时默认使用 Motion
+- 安装源码，而不是依赖封闭的运行时包
 
-Components using other frameworks or incompatible styling systems must be adapted before they enter the verified registry.
+使用其他框架或不兼容样式系统的组件，必须先完成适配才能进入已验证 Registry。
 
-## What makes a component publishable
+## 组件发布标准
 
-Every verified component must:
+每个已验证组件都必须：
 
-- compile and build successfully;
-- include a working preview and usage example;
-- declare all dependencies;
-- support external `className` customization;
-- avoid hard-coded product colors and typography;
-- work on mobile and desktop;
-- document accessibility behavior;
-- record its original author, source, version or commit, modifications, and license;
-- pass the licensing policy in [docs/licensing-policy.md](docs/licensing-policy.md).
+- 成功通过编译和构建；
+- 提供可运行的预览和使用示例；
+- 声明全部依赖；
+- 支持外部 `className` 自定义；
+- 避免硬编码产品颜色和字体；
+- 同时适配移动端与桌面端；
+- 记录无障碍行为；
+- 记录原作者、来源、版本或提交、修改内容和许可证；
+- 通过 [许可证政策](docs/licensing-policy.md) 审查。
 
-## Open-source and third-party code
+## 开源与第三方代码
 
-The original code written for this repository is licensed under MIT unless a file says otherwise.
+除非文件另有说明，本仓库的原创代码采用 MIT 许可证。
 
-Third-party components do **not** automatically become MIT-licensed. Each component retains its upstream license and attribution. A public source repository or downloadable component is not sufficient proof that redistribution is permitted.
+第三方组件**不会**自动变为 MIT 许可。每个组件都保留上游许可证和署名信息。公开源码仓库或可下载组件本身，不能证明允许再分发。
 
-See:
+相关文档：
 
-- [Project charter](PROJECT.md)
-- [Architecture](docs/architecture.md)
-- [Licensing policy](docs/licensing-policy.md)
-- [Contributing](CONTRIBUTING.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md)
-- [Deployment](docs/deployment.md)
+- [项目章程](PROJECT.md)
+- [架构说明](docs/architecture.md)
+- [许可证政策](docs/licensing-policy.md)
+- [贡献指南](CONTRIBUTING.md)
+- [第三方声明](THIRD_PARTY_NOTICES.md)
+- [部署说明](docs/deployment.md)
+- [首批组件路线图](docs/component-roadmap.md)
+- [文件上传队列候选审查](docs/candidates/file-upload-queue.md)
 
-## Framework
+## 技术框架
 
-- Next.js 16 App Router for the public gallery and workbench
-- React 19 and TypeScript 5 for component source
-- Tailwind CSS 4 and CSS variables for styling and tokens
-- pnpm workspaces for the web app, Registry, future CLI, and future MCP service
-- shadcn-compatible distribution contract
-- GitHub Actions for Registry validation, lint, type checking, and production build
-- Static Docker deployment with candidate validation and rollback
+- Next.js 16 App Router：公开组件库与工作台
+- React 19 和 TypeScript 5：组件源码
+- Tailwind CSS 4 和 CSS 变量：样式与设计令牌
+- pnpm workspaces：Web 应用、Registry、未来的 CLI 和 MCP 服务
+- 兼容 shadcn 的分发契约
+- GitHub Actions：Registry 验证、代码检查、类型检查和生产构建
+- 静态 Docker 部署：候选版本验证与回滚
 
-## Local development
+## 本地开发
 
-Requirements: Node.js 22 or newer and pnpm 11.
+要求：Node.js 22 或更高版本，以及 pnpm 11。
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+打开 [http://localhost:3000](http://localhost:3000)。
 
-Run the complete quality gate:
+运行完整质量检查：
 
 ```bash
 pnpm check
 ```
 
-## Repository structure
+## 仓库结构
 
 ```text
 apps/
-  web/                     # Gallery and component workbench
+  web/                     # 组件库与组件工作台
 packages/
-  registry/                # Installable component source and metadata
-  cli/                     # Human-facing installation command
-  mcp/                     # Agent-facing search and installation tools
+  registry/                # 可安装组件源码和元数据
+  cli/                     # 面向用户的安装命令
+  mcp/                     # 面向智能体的搜索和安装工具
 registry/
-  schema/                  # Registry metadata contract
-docs/                      # Architecture, policies and decisions
+  schema/                  # Registry 元数据契约
+docs/                      # 架构、政策与决策文档
 ```
 
-## Current milestone
+## 当前里程碑
 
-Expand the Registry from the verified Flight Status Card golden path while keeping the same license, provenance, preview, installation, responsive, accessibility, and quality requirements for every accepted component.
+以已验证的航班状态卡片完整流程为基准扩充 Registry，并确保每个收录组件都遵循同样的许可证、溯源、预览、安装、响应式、无障碍和质量要求。

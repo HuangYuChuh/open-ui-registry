@@ -1,18 +1,18 @@
-# Registry package
+# Registry 包
 
-This package owns the build and validation workflow for installable components.
+该包负责可安装组件的构建和验证流程。
 
-Two related manifests are intentionally kept separate:
+以下两个相关清单有意分开维护：
 
-- `/registry.json` is the public shadcn-compatible distribution manifest.
-- `/registry/index.json` and `/registry/schema` contain extended provenance, licensing, and quality metadata used by Open UI Registry governance.
+- `/registry.json` 是公开且兼容 shadcn 的分发清单。
+- `/registry/index.json` 和 `/registry/schema` 包含 Open UI Registry 治理所需的扩展溯源、许可证和质量元数据。
 
-Keeping these concerns separate allows standard shadcn clients to install components without losing the additional evidence required by this project.
+这样既能让标准 shadcn 客户端安装组件，又不会丢失本项目要求的额外证据。
 
-The first verified payload is published at:
+第一个已验证组件发布于：
 
 ```text
 https://ui.kelin.center/r/flight-status-card.json
 ```
 
-Canonical source lives in `src/components/flight-status-card.tsx`. The build script reads the authoring manifest at `/registry.json`, embeds the canonical source and bundled license, and writes public shadcn-compatible payloads to `apps/web/public/r/`.
+规范源码位于 `src/components/flight-status-card.tsx`。构建脚本读取 `/registry.json` 编写清单，嵌入规范源码与随附许可证，并将兼容 shadcn 的公开数据写入 `apps/web/public/r/`。

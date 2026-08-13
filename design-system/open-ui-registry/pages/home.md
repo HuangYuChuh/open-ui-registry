@@ -1,14 +1,14 @@
-# Home page override
+# 首页覆盖规则
 
-The home page keeps the technical, high-contrast monospace direction from `MASTER.md`, but uses the operating system monospace font stack instead of downloading Space Mono.
+首页延续 `MASTER.md` 中技术感、高对比度的等宽字体方向，但使用操作系统等宽字体栈，不下载 Space Mono。
 
-Reason: the project homepage and Registry documentation must remain stable in offline development, restricted networks, and CI environments. Typography must not require a request to Google Fonts.
+原因：项目首页和 Registry 文档必须在离线开发、受限网络和 CI 环境中保持稳定，字体排版不能依赖 Google Fonts 请求。
 
-The page is a component catalog rather than a single-component marketing landing page:
+该页面是组件目录，而不是单组件营销落地页：
 
-- keep search and category navigation above the component inventory;
-- use a persistent desktop category sidebar and compact mobile selectors;
-- separate component category, product domain, and verified capability labels;
-- represent filter state in the URL so catalog views can be shared;
-- show useful no-results guidance instead of an empty grid;
-- keep live preview and install command visible on every component card.
+- 将搜索和类别导航放在组件列表之前；
+- 桌面端使用固定类别侧栏，移动端使用紧凑选择器；
+- 分开呈现组件类别、产品领域和已验证能力标签；
+- 在 URL 中记录筛选状态，使目录视图可以分享；
+- 无结果时提供有帮助的引导，而不是显示空网格；
+- 每张组件卡片都应展示实时预览和安装命令。

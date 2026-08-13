@@ -13,9 +13,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Flight Status Card | Open UI Registry",
+  title: "航班状态卡片｜Open UI Registry",
   description:
-    "Install and preview a responsive, accessible flight status component distributed as editable React source.",
+    "预览并安装一个响应式、支持无障碍且以可编辑 React 源码分发的航班状态组件。",
 };
 
 const installCommand =
@@ -43,13 +43,13 @@ const capabilities = getCatalogCapabilities(catalogItem);
 const customRoute: FlightStatusCardProps = {
   departureCode: "PVG",
   arrivalCode: "HKG",
-  departureCity: "Shanghai",
-  arrivalCity: "Hong Kong",
-  departureTime: "TUE, 6:50 AM",
-  arrivalTime: "TUE, 9:35 AM",
-  eta: "ETA 9:35 AM",
-  timezone: "Hong Kong Time",
-  nextEvent: "LANDING IN",
+  departureCity: "上海",
+  arrivalCity: "香港",
+  departureTime: "周二 06:50",
+  arrivalTime: "周二 09:35",
+  eta: "预计 09:35 到达",
+  timezone: "香港时间",
+  nextEvent: "距离着陆",
   nextEventTime: "1:12H",
   progress: 62,
   remainingTime: "1H 12M",
@@ -58,13 +58,13 @@ const customRoute: FlightStatusCardProps = {
 const apiRows = [
   ["departureCode", "string", "YYZ"],
   ["arrivalCode", "string", "HND"],
-  ["departureCity", "string", "Toronto"],
-  ["arrivalCity", "string", "Tokyo"],
-  ["departureTime", "string", "MON, 6:14 PM"],
-  ["arrivalTime", "string", "TUE, 7:14 AM"],
-  ["eta", "string", "ETA 2:15 PM"],
-  ["timezone", "string", "Tokyo Time"],
-  ["nextEvent", "string", "DINNER IN"],
+  ["departureCity", "string", "多伦多"],
+  ["arrivalCity", "string", "东京"],
+  ["departureTime", "string", "周一 18:14"],
+  ["arrivalTime", "string", "周二 07:14"],
+  ["eta", "string", "预计 14:15 到达"],
+  ["timezone", "string", "东京时间"],
+  ["nextEvent", "string", "距离用餐"],
   ["nextEventTime", "string", "2:34H"],
   ["progress", "number", "45"],
   ["remainingTime", "string", "7H 01M"],
@@ -93,12 +93,12 @@ export default function FlightStatusCardPage() {
 
       <main id="main-content">
         <section className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 py-12 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-20">
-          <div>
-            <nav aria-label="Breadcrumb">
+          <div className="min-w-0">
+            <nav aria-label="面包屑导航">
               <ol className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.12em] text-muted-foreground">
                 <li>
                   <Link className="transition-colors hover:text-foreground" href="/#catalog">
-                    Components
+                    组件
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
@@ -117,18 +117,17 @@ export default function FlightStatusCardPage() {
               </ol>
             </nav>
             <h1 className="mt-6 text-[clamp(3.3rem,8vw,7rem)] font-bold leading-[0.88] tracking-[-0.08em] text-balance">
-              Flight Status Card
+              航班状态卡片
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-              A compact travel-status surface for itinerary products, airline
-              dashboards, booking flows, and trip assistants. The installed
-              source is responsive, token-driven, accessible, and editable.
+              适用于行程产品、航空公司看板、预订流程和旅行助手的紧凑状态界面。
+              安装后的源码支持响应式布局、设计令牌和无障碍能力，并可自由编辑。
             </p>
 
             <div className="mt-10 grid gap-5 rounded-xl border border-border bg-surface p-5 sm:p-6">
               <div>
                 <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                  Component category
+                  组件类别
                 </p>
                 <p className="mt-2 text-sm text-foreground">
                   <Link
@@ -145,7 +144,7 @@ export default function FlightStatusCardPage() {
 
               <div>
                 <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                  Product context
+                  产品场景
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {productContexts.map((context) => (
@@ -162,11 +161,11 @@ export default function FlightStatusCardPage() {
 
               <div>
                 <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
-                  Verified capabilities
+                  已验证能力
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
                   <span className="rounded-full border border-accent/50 bg-accent/10 px-3 py-1.5 text-xs font-bold text-accent">
-                    Verified
+                    已验证
                   </span>
                   {capabilities.map((capability) => (
                     <span
@@ -180,7 +179,7 @@ export default function FlightStatusCardPage() {
               </div>
 
               <p className="border-t border-border pt-4 text-xs text-muted-foreground">
-                React · TypeScript · Tailwind CSS · {catalogItem.license.spdx} licensed
+                React · TypeScript · Tailwind CSS · {catalogItem.license.spdx} 许可证
               </p>
             </div>
           </div>
@@ -193,9 +192,9 @@ export default function FlightStatusCardPage() {
         <section className="border-y border-border/70 bg-surface">
           <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.65fr_1.35fr] lg:py-20">
             <div>
-              <p className="text-xs uppercase tracking-[0.16em] text-accent">Install</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-accent">安装</p>
               <h2 className="mt-4 text-3xl font-bold tracking-[-0.06em] sm:text-5xl">
-                One command, then own the code.
+                一条命令，源码归你所有。
               </h2>
             </div>
             <div className="self-end overflow-x-auto rounded-xl border border-border bg-background p-5 sm:p-6">
@@ -207,8 +206,8 @@ export default function FlightStatusCardPage() {
         </section>
 
         <section className="mx-auto grid w-full max-w-7xl gap-14 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Usage</p>
+          <div className="min-w-0">
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">用法</p>
             <pre className="mt-5 overflow-x-auto rounded-xl border border-border bg-surface p-5 text-sm leading-7 text-foreground">
               <code>{`import { FlightStatusCard } from "@/components/ui/flight-status-card";
 
@@ -225,16 +224,16 @@ export function TripOverview() {
             </pre>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Product fit
+              适用场景
             </p>
             <div className="mt-5 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
               {[
-                ["Travel itinerary", "A glanceable status block inside a trip detail screen."],
-                ["Airline dashboard", "A compact route and progress summary for operational views."],
-                ["Booking follow-up", "A confirmation-page status card after purchase."],
-                ["Trip assistant", "A visual answer surface for an AI travel companion."],
+                ["旅行行程", "在行程详情页中快速浏览状态。"],
+                ["航空公司看板", "为运营界面提供紧凑的航线与进度摘要。"],
+                ["预订后续", "在购买后的确认页中展示航班状态。"],
+                ["旅行助手", "作为 AI 旅行助手的可视化回答界面。"],
               ].map(([title, description]) => (
                 <article className="bg-surface p-5" key={title}>
                   <h3 className="font-bold tracking-[-0.03em]">{title}</h3>
@@ -250,15 +249,15 @@ export function TripOverview() {
         <section className="border-y border-border/70 bg-surface">
           <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
             <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              API reference
+              API 参考
             </p>
             <div className="mt-6 overflow-x-auto rounded-xl border border-border">
               <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                 <thead className="bg-background text-muted-foreground">
                   <tr>
-                    <th className="px-5 py-4 font-normal">Property</th>
-                    <th className="px-5 py-4 font-normal">Type</th>
-                    <th className="px-5 py-4 font-normal">Default</th>
+                    <th className="px-5 py-4 font-normal">属性</th>
+                    <th className="px-5 py-4 font-normal">类型</th>
+                    <th className="px-5 py-4 font-normal">默认值</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -278,33 +277,30 @@ export function TripOverview() {
         <section className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
           <article>
             <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Integration notes
+              集成说明
             </p>
             <ul className="mt-5 space-y-4 text-sm leading-6 text-muted-foreground">
               <li>
-                Ships with component-scoped color tokens, so it stays readable even
-                when the host project uses a different shadcn theme.
+                自带组件级颜色令牌，即使宿主项目使用不同的 shadcn 主题也能保持清晰可读。
               </li>
               <li>
-                Override <code className="text-foreground">--flight-card-accent</code>
-                {" "}through <code className="text-foreground">className</code> or
-                {" "}<code className="text-foreground">style</code> without editing its
-                internals.
+                可通过 <code className="text-foreground">className</code> 或
+                {" "}<code className="text-foreground">style</code> 覆盖
+                {" "}<code className="text-foreground">--flight-card-accent</code>，无需修改组件内部代码。
               </li>
-              <li>Moves the ETA panel below the route on narrow screens.</li>
-              <li>Exposes progress semantics and screen-reader route context.</li>
-              <li>Follows the user&apos;s reduced-motion preference.</li>
+              <li>在窄屏上将预计到达时间面板移到航线下方。</li>
+              <li>为进度提供语义信息，并向屏幕阅读器说明航线内容。</li>
+              <li>遵循用户的“减少动态效果”偏好。</li>
             </ul>
           </article>
           <article>
             <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Provenance
+              来源与溯源
             </p>
             <p className="mt-5 text-sm leading-6 text-muted-foreground">
-              Adapted from Componentry&apos;s Flight Status Card by Harsh Jadhav,
-              reviewed at commit <code className="text-foreground">0c90c9b9</code>.
-              Distributed under the upstream MIT License with the notice installed
-              beside the component source.
+              改编自 Harsh Jadhav 为 Componentry 创作的 Flight Status Card，
+              已基于提交 <code className="text-foreground">0c90c9b9</code> 完成审查。
+              组件沿用上游 MIT 许可证，许可证声明会与组件源码一同安装。
             </p>
             <a
               className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-md border border-border px-4 text-sm font-bold outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-accent"
@@ -312,7 +308,7 @@ export function TripOverview() {
               rel="noreferrer"
               target="_blank"
             >
-              View upstream
+              查看上游项目
               <ArrowIcon />
             </a>
           </article>

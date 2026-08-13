@@ -1,12 +1,12 @@
-# Open UI Registry web app
+# Open UI Registry Web 应用
 
-The public component catalog, live preview workbench, and static Registry endpoint.
+面向用户的组件目录、实时预览工作台和静态 Registry 端点。
 
-Run commands from the repository root:
+请在仓库根目录运行：
 
 ```bash
 pnpm dev
 pnpm check
 ```
 
-The app uses Next.js App Router, React, TypeScript, and Tailwind CSS. Generated Registry output is served from `/r`.
+应用采用 Next.js App Router、React、TypeScript 和 Tailwind CSS。生成的 Registry 内容通过 `/r` 提供。

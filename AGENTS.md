@@ -30,3 +30,12 @@ Build an open-source source-code Registry that makes selected frontend component
 ## Communication
 
 Explain technical changes in terms of the product workflow they enable, while retaining exact file paths, commands, schemas, and validation results needed for implementation decisions.
+
+## Language and localization
+
+1. Simplified Chinese (`zh-CN`) is the default language for user-facing pages, navigation, component descriptions, examples, accessibility text, repository documentation, and contributor guidance.
+2. New component metadata must provide a Chinese `title` and `description`. Taxonomy labels and capability labels shown to users must also be Chinese.
+3. Keep code identifiers, package names, API property names, commands, URLs, SPDX identifiers, machine-readable enum values, and upstream license text in their canonical form.
+4. Preserve upstream component names when required for attribution; add a Chinese display name instead of rewriting provenance.
+5. Record localization of redistributed component defaults or accessibility text as a modification in provenance metadata and `THIRD_PARTY_NOTICES.md`.
+6. Before describing a change as complete, check Chinese text at mobile and desktop widths for wrapping, truncation, overflow, and understandable screen-reader labels.

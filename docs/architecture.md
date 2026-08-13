@@ -1,92 +1,92 @@
-# Architecture
+# 架构说明
 
-## Decision summary
+## 决策摘要
 
-Open UI Registry will distribute editable component source through a shadcn-compatible Registry. The gallery, CLI, and future MCP integration are clients of the same Registry metadata rather than separate sources of truth.
+Open UI Registry 通过兼容 shadcn 的 Registry 分发可编辑组件源码。展示站、CLI 和未来的 MCP 集成都使用同一份 Registry 元数据，而不是各自维护不同的数据源。
 
-## Product flow
+## 产品流程
 
 ```text
-External open-source component
-  -> provenance and license review
-  -> technical adaptation
-  -> preview and quality verification
-  -> Registry publication
-  -> CLI or Agent installation
-  -> application-owned source code
+外部开源组件
+  -> 来源与许可证审查
+  -> 技术适配
+  -> 预览与质量验证
+  -> 发布到 Registry
+  -> 通过 CLI 或智能体安装
+  -> 源码归应用所有
 ```
 
-## Why source distribution
+## 为什么分发源码
 
-The project combines selected components from different upstream libraries. Consumers will frequently need to change styling, motion, accessibility, or product-specific behavior. Source distribution keeps those changes possible and prevents the application from depending on a single large runtime package.
+项目组合来自不同上游库的精选组件。使用者经常需要修改样式、动效、无障碍或产品特定行为。源码分发保留了这种能力，也避免应用依赖单个庞大的运行时包。
 
-The tradeoff is that automatic upgrades are harder. To preserve upgradeability, every Registry item records its upstream version or commit and whether it was modified.
+代价是自动升级更加困难。为保留升级能力，每个 Registry 条目都会记录上游版本或提交，以及是否经过修改。
 
-## Version 1 system boundary
+## 第一版系统边界
 
-### Gallery and workbench
+### 展示站与工作台
 
-The web application provides discovery, documentation, live previews, responsive inspection, and install instructions. It is not the authoritative source of component metadata.
+Web 应用负责发现、文档、实时预览、响应式检查和安装说明，但不是组件元数据的权威来源。
 
 ### Registry
 
-The Registry contains component source, metadata, dependency declarations, provenance, license status, and quality status. It is the authoritative source.
+Registry 包含组件源码、元数据、依赖声明、溯源、许可证状态和质量状态，是权威数据源。
 
-### Classification taxonomy
+### 分类体系
 
-Discovery uses three separate layers so unlike concepts do not get mixed into one tag list:
+发现流程使用三个独立层级，避免把不同概念混进同一个标签列表：
 
-1. **Category** describes what the component does in the interface, such as Data Display or Navigation.
-2. **Domain** describes the product context where it may be useful, such as Travel or Commerce.
-3. **Capabilities** are derived from runtime and quality metadata, such as animated, responsive, accessible, or dark-mode ready.
+1. **类别**描述组件在界面中承担的功能，例如数据展示或导航。
+2. **领域**描述组件适用的产品场景，例如旅行或商业。
+3. **能力**从运行时和质量元数据推导，例如动效、响应式、无障碍或深色模式。
 
-`registry/taxonomy.json` is the canonical list of categories and domains. Each Registry item declares one primary category, one subcategory, one or more domains, and reusable product patterns. Free-form tags remain search synonyms rather than navigation structure.
+`registry/taxonomy.json` 是类别和领域的规范清单。每个 Registry 条目声明一个主要类别、一个子类别、一个或多个领域以及可复用产品模式。自由标签仅作为搜索同义词，不承担导航结构。
 
-### Installer
+### 安装器
 
-Version 1 should first use the existing shadcn Registry protocol. A custom CLI should be added only when the project needs workflow that the shadcn CLI cannot provide.
+第一版优先使用现有 shadcn Registry 协议。只有出现 shadcn CLI 无法支持的具体流程时，才添加自定义 CLI。
 
-### Agent integration
+### 智能体集成
 
-The future MCP or Skill layer searches the Registry, explains component suitability, invokes installation, and runs project checks. Agent access does not bypass component verification or consumer-project validation.
+未来的 MCP 或 Skill 层负责搜索 Registry、解释组件适用性、调用安装并运行项目检查。智能体访问不能绕过组件验证或使用方项目验证。
 
-## Canonical component contract
+## 规范组件契约
 
-Version 1 components target:
+第一版组件面向：
 
-- React and TypeScript;
-- Tailwind CSS for utility styling;
-- CSS variables for theme and design-token values;
-- `className` for consumer overrides;
-- named exports;
-- explicit client boundaries when browser APIs or animation require them;
-- explicit npm and Registry dependencies;
-- no hidden global CSS or provider requirement.
+- React 与 TypeScript；
+- 使用 Tailwind CSS 编写实用样式；
+- 使用 CSS 变量承载主题和设计令牌值；
+- 通过 `className` 支持使用方覆盖；
+- 使用命名导出；
+- 浏览器 API 或动画需要时明确客户端边界；
+- 明确声明 npm 与 Registry 依赖；
+- 不隐藏全局 CSS 或 Provider 要求。
 
-Exceptions are allowed only when metadata makes the additional runtime cost visible.
+仅当元数据明确显示额外运行时成本时才允许例外。
 
-## Component states
+## 组件状态
 
-- `draft`: adaptation or evidence is incomplete; not offered as production-ready.
-- `verified`: all required evidence and checks pass; installable from the public Registry.
-- `deprecated`: retained for traceability but no longer recommended for new use.
+- `draft`：适配或证据尚未完成，不作为生产就绪组件提供。
+- `verified`：全部必需证据和检查均已通过，可从公开 Registry 安装。
+- `deprecated`：为保留可追溯性而继续存在，但不再推荐用于新项目。
 
-## Quality gates
+## 质量门禁
 
-Required for every verified component:
+每个已验证组件都必须通过：
 
-1. Registry schema validation.
-2. TypeScript validation.
-3. Production build.
-4. Working preview.
-5. Dependency declaration check.
-6. License and attribution review.
-7. Mobile and desktop review.
-8. Accessibility review appropriate to the interaction.
+1. Registry Schema 验证。
+2. TypeScript 验证。
+3. 生产构建。
+4. 可运行预览。
+5. 依赖声明检查。
+6. 许可证与署名审查。
+7. 移动端与桌面端审查。
+8. 与交互特征相匹配的无障碍审查。
 
-Interactive or visually sensitive components should additionally receive behavior tests and visual regression baselines.
+交互性强或对视觉敏感的组件还应增加行为测试和视觉回归基线。
 
-## Repository topology
+## 仓库结构
 
 ```text
 apps/web
@@ -97,13 +97,13 @@ registry/schema
 docs
 ```
 
-## Current tooling decisions
+## 当前工具决策
 
-- Next.js 16 App Router hosts the gallery, workbench, and static `/r` output.
-- React 19 and TypeScript 5 define the version 1 runtime contract.
-- Tailwind CSS 4 and CSS variables provide the styling and token layer.
-- pnpm workspaces separate the web, Registry, CLI, and MCP boundaries without adding Turborepo at foundation stage.
-- Root-level `pnpm check` validates Registry metadata, runs ESLint and TypeScript, builds Registry output, and performs a production Next.js build.
-- GitHub Actions runs the same check on pushes and pull requests.
+- Next.js 16 App Router 承载展示站、工作台和静态 `/r` 输出。
+- React 19 与 TypeScript 5 定义第一版运行时契约。
+- Tailwind CSS 4 与 CSS 变量提供样式和令牌层。
+- pnpm workspaces 分离 Web、Registry、CLI 和 MCP 边界，基础阶段不引入 Turborepo。
+- 根目录 `pnpm check` 验证 Registry 元数据，运行 ESLint 和 TypeScript，构建 Registry 输出并执行 Next.js 生产构建。
+- GitHub Actions 在推送和拉取请求时运行同一套检查。
 
-The bootstrap Registry builder currently supports the empty foundation manifest. Component payload generation will be implemented and verified with the first golden component rather than guessed in advance.
+Registry 构建器现已支持第一个完整基准组件；后续能力应随真实组件实现和验证，而不是提前猜测。

@@ -1,51 +1,51 @@
-# Contributing
+# 贡献指南
 
-Open UI Registry accepts component proposals, adaptations, quality improvements, documentation, and infrastructure changes.
+Open UI Registry 接受组件提案、适配、质量改进、文档和基础设施变更。
 
-## Proposing a component
+## 提议新组件
 
-Open a component proposal and provide:
+提交组件提案时，请提供：
 
-1. The original demo and source URLs.
-2. The author or organization.
-3. The exact license and where it is declared.
-4. The product or interaction problem the component solves.
-5. Its framework, styling approach, and runtime dependencies.
-6. Any known accessibility, responsive, SSR, or performance limitations.
+1. 原始演示与源码 URL。
+2. 作者或所属组织。
+3. 确切的许可证及其声明位置。
+4. 组件解决的产品或交互问题。
+5. 框架、样式方案和运行时依赖。
+6. 已知的无障碍、响应式、SSR 或性能限制。
 
-Do not submit copied source when the license is missing or unclear.
+许可证缺失或不明确时，请勿提交复制的源码。
 
-## Acceptance workflow
+## 收录流程
 
 ```text
-Proposal
-  -> provenance and license review
-  -> technical fit review
-  -> React and TypeScript adaptation
-  -> token and API normalization
-  -> preview and automated checks
-  -> registry metadata validation
-  -> maintainer review
-  -> verified publication
+提交提案
+  -> 来源与许可证审查
+  -> 技术适配性审查
+  -> React 与 TypeScript 适配
+  -> 设计令牌与 API 规范化
+  -> 预览与自动检查
+  -> Registry 元数据验证
+  -> 维护者审查
+  -> 以“已验证”状态发布
 ```
 
-## Component requirements
+## 组件要求
 
-An accepted component must include:
+收录的组件必须包含：
 
-- source code;
-- a preview or demo;
-- usage documentation;
-- complete Registry metadata;
-- dependency declarations;
-- attribution and license information;
-- responsive and accessibility notes;
-- tests required by its interaction risk.
+- 源码；
+- 预览或演示；
+- 使用文档；
+- 完整的 Registry 元数据；
+- 依赖声明；
+- 署名与许可证信息；
+- 响应式和无障碍说明；
+- 与其交互风险相匹配的测试。
 
-## Modification transparency
+## 修改透明度
 
-If upstream code is modified, record the change in both the component metadata and `THIRD_PARTY_NOTICES.md`. Examples include converting JavaScript to TypeScript, replacing a styling system, changing the public API, removing a dependency, or correcting accessibility behavior.
+如果修改了上游代码，必须同时在组件元数据和 `THIRD_PARTY_NOTICES.md` 中记录。修改示例包括：将 JavaScript 转换为 TypeScript、替换样式系统、更改公开 API、移除依赖或修正无障碍行为。
 
-## Review principle
+## 审查原则
 
-A component is reviewed as a production dependency, not only as a visual demo. Maintainers may reject a component because of unclear licensing, excessive dependency cost, poor accessibility, fragile behavior, or overlap with an existing component.
+我们把组件视为生产依赖进行审查，而不只是视觉演示。许可证不明确、依赖成本过高、无障碍表现不佳、行为脆弱或与现有组件重复，都可能成为拒绝收录的原因。

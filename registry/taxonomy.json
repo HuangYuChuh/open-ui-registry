@@ -3,58 +3,58 @@
   "categories": [
     {
       "id": "layout",
-      "label": "Layout",
-      "description": "Page structure, containers, grids, split views, and resizable regions."
+      "label": "布局",
+      "description": "页面结构、容器、网格、分栏视图和可调整大小的区域。"
     },
     {
       "id": "navigation",
-      "label": "Navigation",
-      "description": "Menus, tabs, breadcrumbs, pagination, and wayfinding patterns."
+      "label": "导航",
+      "description": "菜单、标签页、面包屑、分页和路径引导模式。"
     },
     {
       "id": "input",
-      "label": "Input & Forms",
-      "description": "Fields, selectors, editors, pickers, uploads, and form workflows."
+      "label": "输入与表单",
+      "description": "字段、选择器、编辑器、选取器、上传和表单流程。"
     },
     {
       "id": "data-display",
-      "label": "Data Display",
-      "description": "Cards, tables, charts, timelines, metrics, and structured summaries."
+      "label": "数据展示",
+      "description": "卡片、表格、图表、时间线、指标和结构化摘要。"
     },
     {
       "id": "feedback",
-      "label": "Feedback & Status",
-      "description": "Progress, alerts, loading, validation, results, and system states."
+      "label": "反馈与状态",
+      "description": "进度、提醒、加载、校验、结果和系统状态。"
     },
     {
       "id": "overlay",
-      "label": "Overlay & Disclosure",
-      "description": "Dialogs, drawers, popovers, tooltips, and progressively revealed content."
+      "label": "浮层与展开",
+      "description": "对话框、抽屉、气泡框、工具提示和渐进展示的内容。"
     },
     {
       "id": "media",
-      "label": "Media & Content",
-      "description": "Image, video, audio, document, gallery, and rich-content experiences."
+      "label": "媒体与内容",
+      "description": "图片、视频、音频、文档、画廊和富内容体验。"
     },
     {
       "id": "motion",
-      "label": "Motion & Effects",
-      "description": "Transitions, spatial interactions, visual effects, and animated primitives."
+      "label": "动效与特效",
+      "description": "过渡、空间交互、视觉特效和动画基础组件。"
     },
     {
       "id": "utility",
-      "label": "Utilities",
-      "description": "Accessibility helpers, technical primitives, and cross-category tools."
+      "label": "实用工具",
+      "description": "无障碍辅助、技术基础组件和跨类别工具。"
     }
   ],
   "domains": [
-    { "id": "general", "label": "General product UI" },
-    { "id": "ai", "label": "AI products" },
-    { "id": "commerce", "label": "Commerce" },
-    { "id": "finance", "label": "Finance" },
-    { "id": "travel", "label": "Travel" },
-    { "id": "social", "label": "Social" },
-    { "id": "productivity", "label": "Productivity" },
-    { "id": "developer-tools", "label": "Developer tools" }
+    { "id": "general", "label": "通用产品界面" },
+    { "id": "ai", "label": "AI 产品" },
+    { "id": "commerce", "label": "商业" },
+    { "id": "finance", "label": "金融" },
+    { "id": "travel", "label": "旅行" },
+    { "id": "social", "label": "社交" },
+    { "id": "productivity", "label": "效率工具" },
+    { "id": "developer-tools", "label": "开发者工具" }
   ]
 }
